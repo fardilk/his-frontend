@@ -5,13 +5,18 @@ import MainLayout from './layout/MainLayout'
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import LoginPage from './pages/LoginPage'
+import Login from './pages/Login'
 import './App.css'
 
 const App = () => {
   return (
     <AuthProvider>
       <Routes>
+
         <Route path="/login" element={<LoginPage />} />
+
+        <Route path="/login" element={<Login />} />
+
         <Route element={<ProtectedRoute />}> 
           <Route element={<MainLayout />}> 
             <Route index element={<Home />} />
