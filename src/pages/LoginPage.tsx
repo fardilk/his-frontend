@@ -1,54 +1,10 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../auth/AuthContext'
-import api from '../services/api'
-import './LoginPage.css'
-
-interface FormErrors {
-  email: string
-  password: string
-}
-
-const LoginPage = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [errors, setErrors] = useState<FormErrors>({ email: '', password: '' })
-  const navigate = useNavigate()
-  const auth = useAuth()
-
-  const validate = () => {
-    const newErrors: FormErrors = { email: '', password: '' }
-    if (!/^\S+@\S+\.\S+$/.test(email)) {
-      newErrors.email = 'Invalid email'
-    }
-    if (!password) {
-      newErrors.password = 'Password required'
-    }
-    setErrors(newErrors)
-    return !newErrors.email && !newErrors.password
-  }
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (!validate()) return
-    try {
-      const res = await api.post('/login', { email, password })
-      const { token } = res.data
-      if (token) {
-        localStorage.setItem('token', token)
-        auth.login(email, () => navigate('/'))
-      }
-    } catch {
-      alert('Login failed. Check credentials.')
-    }
-  }
-=======
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
+import api from '../services/api';
 import './LoginPage.css';
 
-interface Errors {
+interface FormErrors {
   email: string;
   password: string;
 }
@@ -56,12 +12,12 @@ interface Errors {
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [errors, setErrors] = useState<Errors>({ email: '', password: '' });
+  const [errors, setErrors] = useState<FormErrors>({ email: '', password: '' });
   const navigate = useNavigate();
   const auth = useAuth();
 
   const validate = (): boolean => {
-    const newErrors: Errors = { email: '', password: '' };
+    const newErrors: FormErrors = { email: '', password: '' };
 
     if (!/^\S+@\S+\.\S+$/.test(email)) {
       newErrors.email = 'Invalid email';
@@ -74,12 +30,22 @@ const LoginPage: React.FC = () => {
     return !newErrors.email && !newErrors.password;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validate()) return;
-    auth.login(email, () => navigate('/'));
-  };
 
+    try {
+      const res = await api.post('/login', { email, password });
+      const { token } = res.data;
+
+      if (token) {
+        localStorage.setItem('token', token);
+        auth.login(email, () => navigate('/'));
+      }
+    } catch {
+      alert('Login failed. Check credentials.');
+    }
+  };
 
   return (
     <div className="login-page">
@@ -105,16 +71,12 @@ const LoginPage: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {errors.password && (
-              <span className="error">{errors.password}</span>
-            )}
             {errors.password && <span className="error">{errors.password}</span>}
           </div>
           <div className="actions">
             <label className="remember">
               <input type="checkbox" /> Remember my password
             </label>
-
             <a href="#" className="forgot">
               Forgot your password?
             </a>
@@ -125,19 +87,7 @@ const LoginPage: React.FC = () => {
         </form>
       </div>
     </div>
-  )
-}
-
-export default LoginPage
-
-            <a href="#" className="forgot">Forgot your password?</a>
-          </div>
-          <button type="submit" className="login-button">LOGIN</button>
-        </form>
-      </div>
-    </div>
   );
 };
 
 export default LoginPage;
-
