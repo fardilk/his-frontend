@@ -42,6 +42,44 @@ const LoginPage = () => {
       alert('Login failed. Check credentials.')
     }
   }
+=======
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../auth/AuthContext';
+import './LoginPage.css';
+
+interface Errors {
+  email: string;
+  password: string;
+}
+
+const LoginPage: React.FC = () => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [errors, setErrors] = useState<Errors>({ email: '', password: '' });
+  const navigate = useNavigate();
+  const auth = useAuth();
+
+  const validate = (): boolean => {
+    const newErrors: Errors = { email: '', password: '' };
+
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      newErrors.email = 'Invalid email';
+    }
+    if (!password) {
+      newErrors.password = 'Password required';
+    }
+
+    setErrors(newErrors);
+    return !newErrors.email && !newErrors.password;
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!validate()) return;
+    auth.login(email, () => navigate('/'));
+  };
+
 
   return (
     <div className="login-page">
@@ -70,11 +108,13 @@ const LoginPage = () => {
             {errors.password && (
               <span className="error">{errors.password}</span>
             )}
+            {errors.password && <span className="error">{errors.password}</span>}
           </div>
           <div className="actions">
             <label className="remember">
               <input type="checkbox" /> Remember my password
             </label>
+
             <a href="#" className="forgot">
               Forgot your password?
             </a>
@@ -89,3 +129,15 @@ const LoginPage = () => {
 }
 
 export default LoginPage
+
+            <a href="#" className="forgot">Forgot your password?</a>
+          </div>
+          <button type="submit" className="login-button">LOGIN</button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default LoginPage;
+
