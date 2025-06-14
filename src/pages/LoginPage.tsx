@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/AuthContext'
@@ -67,9 +68,11 @@ const LoginPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+
             {errors.password && (
               <span className="error">{errors.password}</span>
             )}
+
           </div>
           <div className="actions">
             <label className="remember">
