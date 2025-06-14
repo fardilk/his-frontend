@@ -1,3 +1,48 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../auth/AuthContext'
+import api from '../services/api'
+import './LoginPage.css'
+
+interface FormErrors {
+  email: string
+  password: string
+}
+
+const LoginPage = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [errors, setErrors] = useState<FormErrors>({ email: '', password: '' })
+  const navigate = useNavigate()
+  const auth = useAuth()
+
+  const validate = () => {
+    const newErrors: FormErrors = { email: '', password: '' }
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      newErrors.email = 'Invalid email'
+    }
+    if (!password) {
+      newErrors.password = 'Password required'
+    }
+    setErrors(newErrors)
+    return !newErrors.email && !newErrors.password
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!validate()) return
+    try {
+      const res = await api.post('/login', { email, password })
+      const { token } = res.data
+      if (token) {
+        localStorage.setItem('token', token)
+        auth.login(email, () => navigate('/'))
+      }
+    } catch {
+      alert('Login failed. Check credentials.')
+    }
+  }
+=======
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
@@ -35,6 +80,7 @@ const LoginPage: React.FC = () => {
     auth.login(email, () => navigate('/'));
   };
 
+
   return (
     <div className="login-page">
       <div className="left-panel">
@@ -59,12 +105,31 @@ const LoginPage: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            {errors.password && (
+              <span className="error">{errors.password}</span>
+            )}
             {errors.password && <span className="error">{errors.password}</span>}
           </div>
           <div className="actions">
             <label className="remember">
               <input type="checkbox" /> Remember my password
             </label>
+
+            <a href="#" className="forgot">
+              Forgot your password?
+            </a>
+          </div>
+          <button type="submit" className="login-button">
+            LOGIN
+          </button>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+export default LoginPage
+
             <a href="#" className="forgot">Forgot your password?</a>
           </div>
           <button type="submit" className="login-button">LOGIN</button>
@@ -75,3 +140,4 @@ const LoginPage: React.FC = () => {
 };
 
 export default LoginPage;
+
