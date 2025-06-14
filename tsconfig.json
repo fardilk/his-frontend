@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",                            // Biar support fitur terbaru JS
+    "module": "ESNext",                            // Cocok untuk Vite/modern bundler
+    "jsx": "react-jsx",                            // Supaya React 17+ style tanpa import React di file TSX
+    "strict": true,                                // Aktifin strict mode (biar type checking maksimal)
+    "moduleResolution": "node",                    // Biar module resolve seperti node
+    "esModuleInterop": true,                       // Biar gampang import module commonjs
+    "forceConsistentCasingInFileNames": true,      // Biar case import konsisten
+    "skipLibCheck": true,                          // Biar nggak lama cek node_modules
+    "allowSyntheticDefaultImports": true,          // Biar import default lebih mudah
+    "isolatedModules": true,                       // Biar kompatibel dengan Vite, satu file = satu modul
+    "resolveJsonModule": true                      // Biar bisa import JSON
+  },
+  "include": ["src"]
+}
