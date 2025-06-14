@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/AuthContext'
 import api from '../services/api'
-import './LoginPage.css'
 
 interface FormErrors {
   email: string
