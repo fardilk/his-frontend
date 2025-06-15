@@ -8,8 +8,9 @@ import LoginPage from './pages/LoginPage'
 import Dashboard from './pages/Dashboard'
 import Schedule from './pages/Schedule'
 import Workforce from './pages/Workforce'
+import Homepage from './pages/Homepage'
 import ProtectedRoute from './auth/ProtectedRoute'
-import Layout from './layout/Layout'
+import MainLayout from './layout/MainLayout'
 import AdmissionLayout from './pages/admission/AdmissionLayout'
 import DaftarPasien from './pages/admission/DaftarPasien'
 import FormPasienBaru from './pages/admission/FormPasienBaru'
@@ -20,8 +21,9 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route element={<ProtectedRoute />}>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Navigate to="dashboard" replace />} />
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Navigate to="homepage" replace />} />
+            <Route path="homepage" element={<Homepage />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="schedule" element={<Schedule />} />
             <Route path="workforce" element={<Workforce />} />
