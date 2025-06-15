@@ -2,7 +2,9 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/AuthContext'
 
+
 const Dashboard: React.FC = () => {
+
   const { user, logout } = useAuth()
   const navigate = useNavigate()
 
@@ -21,4 +23,4 @@ const Dashboard: React.FC = () => {
   )
 }
 
-export default Dashboard
+export default Homepage
