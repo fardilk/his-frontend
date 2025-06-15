@@ -1,26 +1,11 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../auth/AuthContext'
-
 
 const Dashboard: React.FC = () => {
-
-  const { user, logout } = useAuth()
-  const navigate = useNavigate()
-
-  const handleLogout = () => {
-    logout()
-    navigate('/login')
-  }
-
   return (
-    <div className="dashboard">
-      <div className="content">
-        <h1>Welcome, {user?.name}</h1>
-        <p>This is your admin dashboard.</p>
-      </div>
+    <div>
+      <h1>Welcome to Dashboard</h1>
     </div>
   )
 }
 
-export default Homepage
+export default Dashboard

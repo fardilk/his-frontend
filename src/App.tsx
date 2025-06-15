@@ -6,7 +6,9 @@ import {
 } from 'react-router-dom'
 import LoginPage from './pages/LoginPage'
 
-import Homepage from './pages/Dashboard'
+import Dashboard from './pages/Dashboard'
+import Schedule from './pages/Schedule'
+import Workforce from './pages/Workforce'
 import ProtectedRoute from './auth/ProtectedRoute'
 import MainLayout from './layout/MainLayout'
 import AdmissionLayout from './pages/admission/AdmissionLayout'
