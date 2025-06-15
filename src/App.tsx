@@ -5,6 +5,7 @@ import {
   Navigate,
 } from 'react-router-dom'
 import LoginPage from './pages/LoginPage'
+
 import Homepage from './pages/Dashboard'
 import ProtectedRoute from './auth/ProtectedRoute'
 import MainLayout from './layout/MainLayout'
@@ -19,8 +20,10 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<MainLayout />}>
-            <Route index element={<Navigate to="homepage" replace />} />
-            <Route path="homepage" element={<Homepage />} />
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="schedule" element={<Schedule />} />
+            <Route path="workforce" element={<Workforce />} />
             <Route path="admission" element={<AdmissionLayout />}>
               <Route index element={<Navigate to="daftar-pasien" replace />} />
               <Route path="daftar-pasien" element={<DaftarPasien />} />
