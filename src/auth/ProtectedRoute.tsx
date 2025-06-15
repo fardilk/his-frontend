@@ -1,13 +1,11 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
+import { useAuth } from './AuthContext'
 
-// Protected route that checks token and role from localStorage
 const ProtectedRoute: React.FC = () => {
-  const token = localStorage.getItem('his_token')
-  const role = localStorage.getItem('his_role')
+  const { token } = useAuth()
 
-  // simple validation: must have token and valid role
-  if (!token || role !== 'administrator') {
+  if (!token) {
     return <Navigate to="/login" replace />
   }
 
