@@ -223,3 +223,23 @@ button:focus-visible {
     width: 100%;
   }
 }
+
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar .icon {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.navbar .profile {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .profile span {
+  margin-left: 0.25rem;
+}
