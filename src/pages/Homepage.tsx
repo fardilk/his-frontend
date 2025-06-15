@@ -20,6 +20,9 @@ const Homepage: React.FC = () => {
             <Link to="/homepage">Dashboard</Link>
           </li>
           <li>
+            <Link to="/admission">Admission</Link>
+          </li>
+          <li>
             <Link to="#">Settings</Link>
           </li>
           <li>

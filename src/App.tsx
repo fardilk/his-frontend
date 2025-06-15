@@ -1,8 +1,16 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom'
 import LoginPage from './pages/LoginPage'
 import Dashboard from './pages/Dashboard'
 import Homepage from './pages/Homepage'
 import ProtectedRoute from './auth/ProtectedRoute';
+import AdmissionLayout from './pages/admission/AdmissionLayout'
+import DaftarPasien from './pages/admission/DaftarPasien'
+import FormPasienBaru from './pages/admission/FormPasienBaru'
 
 function App() {
   return (
@@ -15,6 +23,11 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/homepage" element={<Homepage />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/admission" element={<AdmissionLayout />}>
+            <Route index element={<Navigate to="daftar-pasien" replace />} />
+            <Route path="daftar-pasien" element={<DaftarPasien />} />
+            <Route path="form-pasien-baru" element={<FormPasienBaru />} />
+          </Route>
         </Route>
 
         {/* Optional: tambahkan route default atau 404 */}
