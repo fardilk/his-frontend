@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../services/api'
+import { useAuth } from '../auth/AuthContext'
 
 interface FormErrors {
   email: string
@@ -13,7 +14,9 @@ const LoginPage = () => {
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState<FormErrors>({ email: '', password: '' })
   const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const navigate = useNavigate()
+  const { login } = useAuth()
 
   const validate = () => {
     const newErrors: FormErrors = { email: '', password: '' }
@@ -31,24 +34,17 @@ const LoginPage = () => {
     e.preventDefault()
     if (!validate()) return
     setLoading(true)
+    setErrorMessage('')
     try {
       const res = await api.post('/login', { email, password })
-      const { token, role } = res.data
-      if (token) {
-        localStorage.setItem('his_token', token)
-        if (role) {
-          localStorage.setItem('his_role', role)
-        }
-
-        if (role === 'administrator') {
-          navigate('/homepage-admin')
-        } else {
-          alert('Access denied')
-        }
+      const { token, user } = res.data
+      if (token && user) {
+        login(token, user)
+        navigate('/dashboard')
       }
     } catch (err: any) {
       const message = err.response?.data?.message || 'Login failed'
-      alert(message)
+      setErrorMessage(message)
     } finally {
       setLoading(false)
     }
@@ -62,6 +58,7 @@ const LoginPage = () => {
       <div className="right-panel">
         <form onSubmit={handleSubmit} className="login-form">
           <h2>Welcome!</h2>
+          {errorMessage && <div className="error">{errorMessage}</div>}
           <div className="form-group">
             <input
               type="email"
