@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
+import HomepageAdmin from './pages/HomepageAdmin';
 import ProtectedRoute from './auth/ProtectedRoute';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
 
         {/* Route yang diproteksi */}
         <Route element={<ProtectedRoute />}>
+          <Route path="/homepage-admin" element={<HomepageAdmin />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
 

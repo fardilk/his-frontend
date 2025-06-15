@@ -1,7 +1,6 @@
 
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../auth/AuthContext'
 import api from '../services/api'
 
 interface FormErrors {
@@ -13,8 +12,8 @@ const LoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState<FormErrors>({ email: '', password: '' })
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const auth = useAuth()
 
   const validate = () => {
     const newErrors: FormErrors = { email: '', password: '' }
@@ -31,15 +30,27 @@ const LoginPage = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!validate()) return
+    setLoading(true)
     try {
       const res = await api.post('/login', { email, password })
-      const { token } = res.data
+      const { token, role } = res.data
       if (token) {
-        localStorage.setItem('token', token)
-        auth.login(email, () => navigate('/'))
+        localStorage.setItem('his_token', token)
+        if (role) {
+          localStorage.setItem('his_role', role)
+        }
+
+        if (role === 'administrator') {
+          navigate('/homepage-admin')
+        } else {
+          alert('Access denied')
+        }
       }
-    } catch {
-      alert('Login failed. Check credentials.')
+    } catch (err: any) {
+      const message = err.response?.data?.message || 'Login failed'
+      alert(message)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -81,8 +92,12 @@ const LoginPage = () => {
               Forgot your password?
             </a>
           </div>
-          <button type="submit" className="login-button">
-            LOGIN
+          <button
+            type="submit"
+            className="login-button"
+            disabled={loading}
+          >
+            {loading ? 'Loading...' : 'LOGIN'}
           </button>
         </form>
       </div>
