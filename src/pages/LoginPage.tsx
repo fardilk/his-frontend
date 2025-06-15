@@ -1,103 +1,62 @@
 
-import { useState } from 'react'
+import { useState, FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../services/api'
 import { useAuth } from '../auth/AuthContext'
 
-interface FormErrors {
-  email: string
-  password: string
-}
-
 const LoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [errors, setErrors] = useState<FormErrors>({ email: '', password: '' })
   const [loading, setLoading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('')
+  const [error, setError] = useState('')
   const navigate = useNavigate()
   const { login } = useAuth()
 
-  const validate = () => {
-    const newErrors: FormErrors = { email: '', password: '' }
-    if (!/^\S+@\S+\.\S+$/.test(email)) {
-      newErrors.email = 'Invalid email'
-    }
-    if (!password) {
-      newErrors.password = 'Password required'
-    }
-    setErrors(newErrors)
-    return !newErrors.email && !newErrors.password
-  }
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    if (!validate()) return
+    setError('')
     setLoading(true)
-    setErrorMessage('')
     try {
       const res = await api.post('/login', { email, password })
+      console.log('Login response:', res.data)
       const { token, user } = res.data
-      if (token && user) {
-        login(token, user)
-        navigate('/dashboard')
-      }
+      login(token, user)
+      navigate('/dashboard')
     } catch (err: any) {
       const message = err.response?.data?.message || 'Login failed'
-      setErrorMessage(message)
+      setError(message)
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <div className="login-page">
-      <div className="left-panel">
-        <div className="illustration" />
-      </div>
-      <div className="right-panel">
-        <form onSubmit={handleSubmit} className="login-form">
-          <h2>Welcome!</h2>
-          {errorMessage && <div className="error">{errorMessage}</div>}
-          <div className="form-group">
-            <input
-              type="email"
-              placeholder="Your E-mail"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {errors.email && <span className="error">{errors.email}</span>}
-          </div>
-          <div className="form-group">
-            <input
-              type="password"
-              placeholder="Your Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-
-            {errors.password && (
-              <span className="error">{errors.password}</span>
-            )}
-
-          </div>
-          <div className="actions">
-            <label className="remember">
-              <input type="checkbox" /> Remember my password
-            </label>
-            <a href="#" className="forgot">
-              Forgot your password?
-            </a>
-          </div>
-          <button
-            type="submit"
-            className="login-button"
-            disabled={loading}
-          >
-            {loading ? 'Loading...' : 'LOGIN'}
-          </button>
-        </form>
-      </div>
+    <div>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Loading...' : 'Login'}
+        </button>
+      </form>
     </div>
   )
 }
