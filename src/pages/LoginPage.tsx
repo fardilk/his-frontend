@@ -38,7 +38,7 @@ const LoginPage = () => {
       const res = await api.post('/login', { email, password })
       const { token, user } = res.data
       login(token, user)
-      navigate('/homepage')
+      navigate('/dashboard')
     } catch (err: any) {
       const message = err.response?.data?.message || 'Login failed'
       setErrorMessage(message)

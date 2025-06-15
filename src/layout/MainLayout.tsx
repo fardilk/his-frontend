@@ -14,9 +14,6 @@ const MainLayout: React.FC = () => {
         <h2>Menu</h2>
         <ul>
           <li>
-            <Link to="/homepage">Homepage</Link>
-          </li>
-          <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
           <li>
