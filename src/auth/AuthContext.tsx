@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useState, ReactNode } from 'react'
 
 interface User {
   id: number
@@ -8,18 +8,16 @@ interface User {
 }
 
 interface AuthContextType {
-  user: User | null
   token: string | null
+  user: User | null
   login: (token: string, user: User) => void
   logout: () => void
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const [token, setToken] = useState<string | null>(
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [token, setToken] = useState<string | null>(() =>
     localStorage.getItem('his_token')
   )
   const [user, setUser] = useState<User | null>(() => {
@@ -32,9 +30,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setUser(newUser)
     localStorage.setItem('his_token', newToken)
     localStorage.setItem('his_user', JSON.stringify(newUser))
-    if (newUser.role) {
-      localStorage.setItem('his_role', newUser.role)
-    }
+    console.log('Token saved to localStorage:', localStorage.getItem('his_token'))
   }
 
   const logout = () => {
@@ -42,11 +38,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setUser(null)
     localStorage.removeItem('his_token')
     localStorage.removeItem('his_user')
-    localStorage.removeItem('his_role')
   }
 
   return (
-    <AuthContext.Provider value={{ user, token, login, logout }}>
+    <AuthContext.Provider value={{ token, user, login, logout }}>
       {children}
     </AuthContext.Provider>
   )
