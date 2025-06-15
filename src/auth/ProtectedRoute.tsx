@@ -1,21 +1,17 @@
-import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from './AuthContext';
+import React from 'react'
+import { Navigate, Outlet } from 'react-router-dom'
 
+// Protected route that checks token and role from localStorage
 const ProtectedRoute: React.FC = () => {
-  const auth = useAuth();
+  const token = localStorage.getItem('his_token')
+  const role = localStorage.getItem('his_role')
 
-  // Di sini kita asumsikan kalau ada login artinya user authorized
-  // Anda bisa tambah check token, role, dsb jika perlu
-  const isAuthenticated = !!auth;
-
-  if (!isAuthenticated) {
-    // Redirect ke login kalau belum auth
-    return <Navigate to="/login" replace />;
+  // simple validation: must have token and valid role
+  if (!token || role !== 'administrator') {
+    return <Navigate to="/login" replace />
   }
 
-  // Kalau sudah auth, render child route
-  return <Outlet />;
-};
+  return <Outlet />
+}
 
-export default ProtectedRoute;
+export default ProtectedRoute
