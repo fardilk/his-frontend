@@ -1,0 +1,17 @@
+import React from 'react';
+
+interface {{pascalCase name}}PanelProps {
+  data: any;
+  onChange: (field: string, value: string) => void;
+}
+
+const {{pascalCase name}}Panel: React.FC<{{pascalCase name}}PanelProps> = ({ data, onChange }) => {
+  return (
+    <div className="form-panel">
+      <h2>{{pascalCase name}} Panel</h2>
+      {/* Add form fields here */}
+    </div>
+  );
+};
+
+export default {{pascalCase name}}Panel;
