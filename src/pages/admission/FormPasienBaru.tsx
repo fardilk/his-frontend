@@ -6,6 +6,7 @@ import AlamatDomisiliPanel from '../../components/form-panels/AlamatDomisiliPane
 import KontakPanel from '../../components/form-panels/KontakPanel'
 import KontakDaruratPanel from '../../components/form-panels/KontakDaruratPanel'
 import HubunganKeluargaPanel from '../../components/form-panels/HubunganKeluargaPanel'
+
 import type { PatientFormState, SectionKey, SimpleKey } from '../../components/form-panels/types'
 import { initialState } from '../../components/form-panels/types'
 
@@ -19,6 +20,7 @@ const FormPasienBaru: React.FC = () => {
     section: S,
     field: F,
     value: PatientFormState[S][F],
+
   ) => {
     setForm(prev => ({
       ...prev,
@@ -31,7 +33,9 @@ const FormPasienBaru: React.FC = () => {
 
   const handleSimpleChange = <S extends SimpleKey>(
     field: S,
+
     value: PatientFormState[S],
+
   ) => {
     setForm(prev => ({
       ...prev,
