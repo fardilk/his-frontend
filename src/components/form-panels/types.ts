@@ -46,7 +46,8 @@ export interface EmergencyContactForm {
   address: string
 }
 
-export interface FormState {
+
+export interface PatientFormState {
   emergency: boolean
   identityNumber: IdentityNumberForm
   patientData: PatientDataForm
@@ -68,7 +69,7 @@ export type SectionKey =
 
 export type SimpleKey = 'emergency' | 'sameAsIdentity' | 'familyPatient'
 
-export const initialState: FormState = {
+export const initialState: PatientFormState = {
   emergency: false,
   identityNumber: { nationality: '', idType: '', idNumber: '' },
   patientData: {
