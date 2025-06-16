@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import NomorIdentitasPanel from '../../components/form-panels/NomorIdentitasPanel'
 import DataPasienPanel from '../../components/form-panels/DataPasienPanel'
 import AlamatIdentitasPanel from '../../components/form-panels/AlamatIdentitasPanel'
@@ -15,6 +15,13 @@ const FormPasienBaru: React.FC = () => {
   const [form, setForm] = useState<PatientFormState>(initialState)
 
   const [showPopup, setShowPopup] = useState(false)
+
+  useEffect(() => {
+    if (showPopup) {
+      const timer = setTimeout(() => setShowPopup(false), 2000)
+      return () => clearTimeout(timer)
+    }
+  }, [showPopup])
 
   const handleChange = <S extends SectionKey, F extends keyof PatientFormState[S]>(
     section: S,
@@ -47,7 +54,6 @@ const FormPasienBaru: React.FC = () => {
     e.preventDefault()
     console.log(form)
     setShowPopup(true)
-    setTimeout(() => setShowPopup(false), 2000)
   }
 
   return (
