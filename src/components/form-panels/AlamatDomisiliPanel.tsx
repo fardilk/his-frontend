@@ -1,19 +1,14 @@
 import React from 'react'
+import { AddressForm } from './types'
 
 interface Props {
   sameAsIdentity: boolean
-  data: {
-    searchRegion: string
-    village: string
-    subDistrict: string
-    city: string
-    province: string
-    regionCode: string
-    rt: string
-    rw: string
-  }
+  data: AddressForm
   onSameAsIdentityChange: (value: boolean) => void
-  onChange: (field: string, value: string) => void
+  onChange: <K extends keyof AddressForm>(
+    field: K,
+    value: AddressForm[K],
+  ) => void
 }
 
 const AlamatDomisiliPanel: React.FC<Props> = ({ sameAsIdentity, data, onSameAsIdentityChange, onChange }) => (

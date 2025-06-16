@@ -1,15 +1,12 @@
 import React from 'react'
+import { EmergencyContactForm } from './types'
 
 interface Props {
-  data: {
-    relationship: string
-    name: string
-    countryCode: string
-    phoneNumber: string
-    email: string
-    address: string
-  }
-  onChange: (field: string, value: string) => void
+  data: EmergencyContactForm
+  onChange: <K extends keyof EmergencyContactForm>(
+    field: K,
+    value: EmergencyContactForm[K],
+  ) => void
 }
 
 const KontakDaruratPanel: React.FC<Props> = ({ data, onChange }) => (

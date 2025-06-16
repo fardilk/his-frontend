@@ -6,36 +6,40 @@ import AlamatDomisiliPanel from '../../components/form-panels/AlamatDomisiliPane
 import KontakPanel from '../../components/form-panels/KontakPanel'
 import KontakDaruratPanel from '../../components/form-panels/KontakDaruratPanel'
 import HubunganKeluargaPanel from '../../components/form-panels/HubunganKeluargaPanel'
+import {
+  FormState,
+  SectionKey,
+  SimpleKey,
+  initialState,
+} from '../../components/form-panels/types'
+
 
 const FormPasienBaru: React.FC = () => {
-  const [form, setForm] = useState({
-    emergency: false,
-    identityNumber: { nationality: '', idType: '', idNumber: '' },
-    patientData: { salutation: '', fullName: '', placeOfBirth: '', dateOfBirth: '', gender: '', maritalStatus: '', country: '', bloodType: '', religion: '', language: '', ethnicity: '', lastEducation: '', occupation: '' },
-    identityAddress: { searchRegion: '', village: '', subDistrict: '', city: '', province: '', regionCode: '', rt: '', rw: '' },
-    sameAsIdentity: false,
-    domicileAddress: { searchRegion: '', village: '', subDistrict: '', city: '', province: '', regionCode: '', rt: '', rw: '' },
-    contact: { countryCode: '', phoneNumber: '', email: '' },
-    emergencyContact: { relationship: '', name: '', countryCode: '', phoneNumber: '', email: '', address: '' },
-    familyPatient: ''
-  })
+  const [form, setForm] = useState<FormState>(initialState)
 
   const [showPopup, setShowPopup] = useState(false)
 
-  const handleChange = (section: string, field: string, value: any) => {
+  const handleChange = <S extends SectionKey>(
+    section: S,
+    field: keyof FormState[S],
+    value: FormState[S][keyof FormState[S]],
+  ) => {
     setForm(prev => ({
       ...prev,
       [section]: {
         ...prev[section],
-        [field]: value
-      }
+        [field]: value,
+      },
     }))
   }
 
-  const handleSimpleChange = (field: string, value: any) => {
+  const handleSimpleChange = <S extends SimpleKey>(
+    field: S,
+    value: FormState[S],
+  ) => {
     setForm(prev => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }))
   }
 

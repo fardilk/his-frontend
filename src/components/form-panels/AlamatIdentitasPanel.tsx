@@ -1,17 +1,12 @@
 import React from 'react'
+import { AddressForm } from './types'
 
 interface Props {
-  data: {
-    searchRegion: string
-    village: string
-    subDistrict: string
-    city: string
-    province: string
-    regionCode: string
-    rt: string
-    rw: string
-  }
-  onChange: (field: string, value: string) => void
+  data: AddressForm
+  onChange: <K extends keyof AddressForm>(
+    field: K,
+    value: AddressForm[K],
+  ) => void
 }
 
 const AlamatIdentitasPanel: React.FC<Props> = ({ data, onChange }) => (
