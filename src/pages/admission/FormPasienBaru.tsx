@@ -6,6 +6,13 @@ import AlamatDomisiliPanel from '../../components/form-panels/AlamatDomisiliPane
 import KontakPanel from '../../components/form-panels/KontakPanel'
 import KontakDaruratPanel from '../../components/form-panels/KontakDaruratPanel'
 import HubunganKeluargaPanel from '../../components/form-panels/HubunganKeluargaPanel'
+import {
+  FormState,
+  SectionKey,
+  SimpleKey,
+  initialState,
+} from '../../components/form-panels/types'
+
 
 interface IdentityNumberForm {
   nationality: string

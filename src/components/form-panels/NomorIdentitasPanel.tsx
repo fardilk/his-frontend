@@ -1,12 +1,12 @@
 import React from 'react'
+import { IdentityNumberForm } from './types'
 
 interface Props {
-  data: {
-    nationality: string
-    idType: string
-    idNumber: string
-  }
-  onChange: (field: string, value: string) => void
+  data: IdentityNumberForm
+  onChange: <K extends keyof IdentityNumberForm>(
+    field: K,
+    value: IdentityNumberForm[K],
+  ) => void
 }
 
 const NomorIdentitasPanel: React.FC<Props> = ({ data, onChange }) => (
