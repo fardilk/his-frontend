@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import NomorIdentitasPanel from '../components/form-panels/NomorIdentitasPanel'
-import DataPasienPanel from '../components/form-panels/DataPasienPanel'
-import AlamatIdentitasPanel from '../components/form-panels/AlamatIdentitasPanel'
-import AlamatDomisiliPanel from '../components/form-panels/AlamatDomisiliPanel'
-import KontakPanel from '../components/form-panels/KontakPanel'
-import KontakDaruratPanel from '../components/form-panels/KontakDaruratPanel'
-import HubunganKeluargaPanel from '../components/form-panels/HubunganKeluargaPanel'
+import NomorIdentitasPanel from '../../components/form-panels/NomorIdentitasPanel'
+import DataPasienPanel from '../../components/form-panels/DataPasienPanel'
+import AlamatIdentitasPanel from '../../components/form-panels/AlamatIdentitasPanel'
+import AlamatDomisiliPanel from '../../components/form-panels/AlamatDomisiliPanel'
+import KontakPanel from '../../components/form-panels/KontakPanel'
+import KontakDaruratPanel from '../../components/form-panels/KontakDaruratPanel'
+import HubunganKeluargaPanel from '../../components/form-panels/HubunganKeluargaPanel'
 
 const FormPasienBaru: React.FC = () => {
   const [form, setForm] = useState({
