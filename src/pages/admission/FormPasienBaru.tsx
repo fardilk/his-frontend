@@ -6,36 +6,36 @@ import AlamatDomisiliPanel from '../../components/form-panels/AlamatDomisiliPane
 import KontakPanel from '../../components/form-panels/KontakPanel'
 import KontakDaruratPanel from '../../components/form-panels/KontakDaruratPanel'
 import HubunganKeluargaPanel from '../../components/form-panels/HubunganKeluargaPanel'
+import type { PatientFormState, SectionKey, SimpleKey } from '../../components/form-panels/types'
+import { initialState } from '../../components/form-panels/types'
+
 
 const FormPasienBaru: React.FC = () => {
-  const [form, setForm] = useState({
-    emergency: false,
-    identityNumber: { nationality: '', idType: '', idNumber: '' },
-    patientData: { salutation: '', fullName: '', placeOfBirth: '', dateOfBirth: '', gender: '', maritalStatus: '', country: '', bloodType: '', religion: '', language: '', ethnicity: '', lastEducation: '', occupation: '' },
-    identityAddress: { searchRegion: '', village: '', subDistrict: '', city: '', province: '', regionCode: '', rt: '', rw: '' },
-    sameAsIdentity: false,
-    domicileAddress: { searchRegion: '', village: '', subDistrict: '', city: '', province: '', regionCode: '', rt: '', rw: '' },
-    contact: { countryCode: '', phoneNumber: '', email: '' },
-    emergencyContact: { relationship: '', name: '', countryCode: '', phoneNumber: '', email: '', address: '' },
-    familyPatient: ''
-  })
+  const [form, setForm] = useState<PatientFormState>(initialState)
 
   const [showPopup, setShowPopup] = useState(false)
 
-  const handleChange = (section: string, field: string, value: any) => {
+  const handleChange = <S extends SectionKey, F extends keyof PatientFormState[S]>(
+    section: S,
+    field: F,
+    value: PatientFormState[S][F],
+  ) => {
     setForm(prev => ({
       ...prev,
       [section]: {
         ...prev[section],
-        [field]: value
-      }
+        [field]: value,
+      },
     }))
   }
 
-  const handleSimpleChange = (field: string, value: any) => {
+  const handleSimpleChange = <S extends SimpleKey>(
+    field: S,
+    value: PatientFormState[S],
+  ) => {
     setForm(prev => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }))
   }
 

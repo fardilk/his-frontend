@@ -1,22 +1,12 @@
 import React from 'react'
+import { PatientDataForm } from './types'
 
 interface Props {
-  data: {
-    salutation: string
-    fullName: string
-    placeOfBirth: string
-    dateOfBirth: string
-    gender: string
-    maritalStatus: string
-    country: string
-    bloodType: string
-    religion: string
-    language: string
-    ethnicity: string
-    lastEducation: string
-    occupation: string
-  }
-  onChange: (field: string, value: string) => void
+  data: PatientDataForm
+  onChange: <K extends keyof PatientDataForm>(
+    field: K,
+    value: PatientDataForm[K],
+  ) => void
 }
 
 const DataPasienPanel: React.FC<Props> = ({ data, onChange }) => (
