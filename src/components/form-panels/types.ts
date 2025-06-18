@@ -46,7 +46,6 @@ export interface EmergencyContactForm {
   address: string
 }
 
-
 export interface PatientFormState {
   emergency: boolean
   identityNumber: IdentityNumberForm
