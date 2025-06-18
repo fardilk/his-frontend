@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 
 interface Pasien {
   noRm: string
+  mrn: string
   nama: string
   tanggalLahir: string
   alamat: string
@@ -11,6 +12,7 @@ interface Pasien {
 const mockData: Pasien[] = [
   {
     noRm: '001',
+    mrn: 'RJ000001',
     nama: 'John Doe',
     tanggalLahir: '1990-01-01',
     alamat: 'Jakarta',
@@ -18,6 +20,7 @@ const mockData: Pasien[] = [
   },
   {
     noRm: '002',
+    mrn: 'RJ000002',
     nama: 'Jane Smith',
     tanggalLahir: '1985-05-12',
     alamat: 'Bandung',
@@ -38,6 +41,7 @@ const DaftarPasien: React.FC = () => {
         <thead>
           <tr>
             <th>No RM</th>
+            <th>MRN</th>
             <th>Nama Pasien</th>
             <th>Tanggal Lahir</th>
             <th>Alamat</th>
@@ -49,6 +53,7 @@ const DaftarPasien: React.FC = () => {
           {mockData.map((p, index) => (
             <tr key={index}>
               <td>{p.noRm}</td>
+              <td>{p.mrn}</td>
               <td>{p.nama}</td>
               <td>{p.tanggalLahir}</td>
               <td>{p.alamat}</td>
