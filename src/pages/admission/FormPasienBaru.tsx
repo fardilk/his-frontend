@@ -51,10 +51,23 @@ const FormPasienBaru: React.FC = () => {
   }
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log(form)
-    setShowPopup(true)
-  }
+  e.preventDefault()
+
+  const jsonData = JSON.stringify(form, null, 2)
+  console.log("Saved JSON:", jsonData)
+  localStorage.setItem('savedPatientData', jsonData)
+
+  setShowPopup(true)
+
+  // Delay before clearing and redirecting
+  setTimeout(() => {
+    // Clear localStorage (optional, depending what you want)
+    localStorage.removeItem('savedPatientData')
+
+    // Navigate back to admission page
+    window.location.href = '/admission'   // or use navigate() if using react-router
+  }, 2000)
+}
 
   return (
     <div>
