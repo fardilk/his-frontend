@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import Button from '../../components/Button'
 
 interface Pasien {
   noRm: string
@@ -32,41 +33,41 @@ const DaftarPasien: React.FC = () => {
   const navigate = useNavigate()
 
   return (
-    <div>
-      <h2>Daftar Pasien</h2>
-      <button onClick={() => navigate('/admission/form-pasien-baru')}>
-        Daftarkan Pasien
-      </button>
-      <table className="pasien-table">
+    <section className="space-y-4">
+      <div className="flex items-center justify-between">
+        <h2 className="text-lg font-semibold">Daftar Pasien</h2>
+        <Button onClick={() => navigate('/admission/form-pasien-baru')}>
+          Daftarkan Pasien
+        </Button>
+      </div>
+      <table className="min-w-full text-sm text-left border border-gray-200">
         <thead>
           <tr>
-            <th>No RM</th>
-            <th>MRN</th>
-            <th>Nama Pasien</th>
-            <th>Tanggal Lahir</th>
-            <th>Alamat</th>
-            <th>Status</th>
-            <th>Action</th>
+            <th className="px-3 py-2 border-b">No RM</th>
+            <th className="px-3 py-2 border-b">Nama Pasien</th>
+            <th className="px-3 py-2 border-b">Tanggal Lahir</th>
+            <th className="px-3 py-2 border-b">Alamat</th>
+            <th className="px-3 py-2 border-b">Status</th>
+            <th className="px-3 py-2 border-b">Action</th>
           </tr>
         </thead>
         <tbody>
           {mockData.map((p, index) => (
             <tr key={index}>
-              <td>{p.noRm}</td>
-              <td>{p.mrn}</td>
-              <td>{p.nama}</td>
-              <td>{p.tanggalLahir}</td>
-              <td>{p.alamat}</td>
-              <td>{p.status}</td>
-              <td>
-                <button className="edit-btn">Edit</button>{' '}
-                <button className="delete-btn">Delete</button>
+              <td className="px-3 py-2 border-b">{p.noRm}</td>
+              <td className="px-3 py-2 border-b">{p.nama}</td>
+              <td className="px-3 py-2 border-b">{p.tanggalLahir}</td>
+              <td className="px-3 py-2 border-b">{p.alamat}</td>
+              <td className="px-3 py-2 border-b">{p.status}</td>
+              <td className="px-3 py-2 border-b space-x-2">
+                <Button variant="secondary" className="edit-btn">Edit</Button>
+                <Button variant="secondary" className="delete-btn">Delete</Button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
+    </section>
   )
 }
 

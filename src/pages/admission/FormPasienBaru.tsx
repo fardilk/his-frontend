@@ -7,6 +7,7 @@ import KontakPanel from '../../components/form-panels/KontakPanel'
 import KontakDaruratPanel from '../../components/form-panels/KontakDaruratPanel'
 import HubunganKeluargaPanel from '../../components/form-panels/HubunganKeluargaPanel'
 import SuccessToast from '../../components/SuccessToast'
+import Button from '../../components/Button'
 
 import type { PatientFormState, SectionKey, SimpleKey } from '../../components/form-panels/types'
 import { initialState } from '../../components/form-panels/types'
@@ -64,17 +65,18 @@ const FormPasienBaru: React.FC = () => {
 }
 
   return (
-    <div>
-      <h2>Registrasi Pasien Baru</h2>
-      <form onSubmit={handleSubmit}>
+    <section className="space-y-4">
+      <h2 className="text-lg font-semibold">Registrasi Pasien Baru</h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label>
+          <label className="flex items-center space-x-2">
             <input
               type="checkbox"
+              className="form-checkbox"
               checked={form.emergency}
               onChange={(e) => handleSimpleChange('emergency', e.target.checked)}
             />
-            Register as Emergency Patient
+            <span>Register as Emergency Patient</span>
           </label>
         </div>
 
@@ -115,13 +117,11 @@ const FormPasienBaru: React.FC = () => {
           onChange={(value) => handleSimpleChange('familyPatient', value)}
         />
 
-        <div style={{ marginTop: '1rem' }}>
-          <button type="button" onClick={() => alert('Cancelled')}>
+        <div className="pt-4 flex space-x-2">
+          <Button type="button" variant="secondary" onClick={() => alert('Cancelled')}>
             Cancel
-          </button>
-          <button type="submit" style={{ marginLeft: '0.5rem' }}>
-            Save
-          </button>
+          </Button>
+          <Button type="submit">Save</Button>
         </div>
       </form>
 
@@ -131,7 +131,7 @@ const FormPasienBaru: React.FC = () => {
           onClose={() => setShowPopup(false)}
         />
       )}
-    </div>
+    </section>
   )
 }
 

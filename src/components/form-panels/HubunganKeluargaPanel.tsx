@@ -6,11 +6,16 @@ interface Props {
 }
 
 const HubunganKeluargaPanel: React.FC<Props> = ({ value, onChange }) => (
-  <fieldset>
-    <legend>Family Relationship</legend>
-    <div>
-      <label>Search Family Patient:</label>
-      <input type="text" value={value} onChange={e => onChange(e.target.value)} />
+  <fieldset className="border rounded p-4 space-y-3">
+    <legend className="font-medium">Family Relationship</legend>
+    <div className="space-y-1">
+      <label className="block text-sm">Search Family Patient:</label>
+      <input
+        className="w-full border rounded p-2"
+        type="text"
+        value={value}
+        onChange={e => onChange(e.target.value)}
+      />
     </div>
   </fieldset>
 )
