@@ -3,6 +3,7 @@ import Button from '../../components/Button'
 
 interface Pasien {
   noRm: string
+  mrn: string
   nama: string
   tanggalLahir: string
   alamat: string
@@ -12,6 +13,7 @@ interface Pasien {
 const mockData: Pasien[] = [
   {
     noRm: '001',
+    mrn: 'RJ000001',
     nama: 'John Doe',
     tanggalLahir: '1990-01-01',
     alamat: 'Jakarta',
@@ -19,6 +21,7 @@ const mockData: Pasien[] = [
   },
   {
     noRm: '002',
+    mrn: 'RJ000002',
     nama: 'Jane Smith',
     tanggalLahir: '1985-05-12',
     alamat: 'Bandung',
