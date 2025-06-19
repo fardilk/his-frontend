@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { useAuth } from '../auth/AuthContext'
 import Sidebar from '../components/Sidebar'
 
@@ -12,7 +12,7 @@ const MainLayout: React.FC = () => {
   return (
     <div className="dashboard">
       <Sidebar />
-      <div className="main">
+      <main className="main ml-64">
         <div className="navbar">
           <span className="icon">🔔</span>
           <span className="icon">⚙️</span>
@@ -21,10 +21,10 @@ const MainLayout: React.FC = () => {
             <span>{user?.name || 'Administrator'}</span>
           </div>
         </div>
-        <div className="ml-64 content">
+        <div className="content">
           <Outlet />
         </div>
-      </div>
+      </main>
     </div>
   )
 }
