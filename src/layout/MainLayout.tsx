@@ -10,9 +10,9 @@ const MainLayout: React.FC = () => {
   }
 
   return (
-    <div className="dashboard">
+    <div className="dashboard flex">
       <Sidebar />
-      <main className="main ml-64">
+      <main className="main flex-1">
         <div className="navbar">
           <span className="icon">🔔</span>
           <span className="icon">⚙️</span>
