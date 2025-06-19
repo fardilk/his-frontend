@@ -1,10 +1,15 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react'
 
+interface Role {
+  id: number
+  name: string
+}
+
 interface User {
   id: number
   name: string
   email: string
-  role: string | null
+  role: Role | string | null
 }
 
 interface AuthContextType {

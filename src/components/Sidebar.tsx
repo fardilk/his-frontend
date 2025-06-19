@@ -18,14 +18,17 @@ const menuItems = [
 const Sidebar: React.FC = () => {
   const location = useLocation()
   const { user } = useAuth()
-  const [role, setRole] = useState<string>(user?.role || 'Administrator')
+  const initialRole =
+    typeof user?.role === 'string' ? user.role : user?.role?.name || 'Administrator'
+  const [role, setRole] = useState<string>(initialRole)
 
   const handleRoleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setRole(e.target.value)
   }
 
   const name = user?.name || 'Administrator'
-  const currentRole = user?.role || 'Administrator'
+  const currentRole =
+    typeof user?.role === 'string' ? user.role : user?.role?.name || 'Administrator'
 
   return (
     <aside className="sidebar bg-gray-100 p-4 w-64 space-y-4">
