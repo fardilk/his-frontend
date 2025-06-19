@@ -49,7 +49,7 @@ const Sidebar: React.FC = () => {
   ]
 
   return (
-    <aside className="fixed top-0 left-0 h-full w-64 bg-gray-100 shadow overflow-auto p-4 space-y-4">
+    <aside className="h-screen w-64 bg-gray-100 shadow overflow-auto p-4 space-y-4">
       {/* Profile Section */}
       <div className="flex flex-col items-center space-y-2">
         <div className="w-16 h-16 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden">
