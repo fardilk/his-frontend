@@ -12,7 +12,7 @@ const MainLayout: React.FC = () => {
   return (
     <div className="dashboard">
       <Sidebar />
-      <main className="main ml-64 w-[calc(100%-16rem)]">
+      <main className="main ml-64">
         <div className="navbar">
           <span className="icon">🔔</span>
           <span className="icon">⚙️</span>
