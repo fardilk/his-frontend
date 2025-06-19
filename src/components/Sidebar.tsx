@@ -49,11 +49,10 @@ const Sidebar: React.FC = () => {
   ]
 
   return (
-    <aside className="sidebar bg-gray-100 p-4 w-64 space-y-4">
+    <aside className="fixed top-0 left-0 h-full w-64 bg-gray-100 shadow overflow-auto p-4 space-y-4">
       {/* Profile Section */}
       <div className="flex flex-col items-center space-y-2">
         <div className="w-16 h-16 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden">
-          {/* Placeholder avatar */}
           <i className="fa-solid fa-user text-gray-500 text-2xl" />
         </div>
         <div className="text-center">
@@ -91,7 +90,9 @@ const Sidebar: React.FC = () => {
                 {item.path ? (
                   <Link
                     to={item.path}
-                    className={`flex items-center space-x-2 p-2 rounded hover:bg-gray-200 ${active ? 'bg-blue-100' : ''}`}
+                    className={`flex items-center space-x-2 p-2 rounded hover:bg-gray-200 ${
+                      active ? 'bg-blue-100' : ''
+                    }`}
                   >
                     <i className={`${item.icon} w-4`} />
                     <span>{item.label}</span>
@@ -104,7 +105,7 @@ const Sidebar: React.FC = () => {
                     <i className={`${item.icon} w-4`} />
                     <span>{item.label}</span>
                   </button>
-                )
+                )}
               </li>
             )
           })}
@@ -115,4 +116,3 @@ const Sidebar: React.FC = () => {
 }
 
 export default Sidebar
-

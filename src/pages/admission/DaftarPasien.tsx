@@ -33,7 +33,7 @@ const DaftarPasien: React.FC = () => {
   const navigate = useNavigate()
 
   return (
-    <section className="space-y-4">
+    <section className="ml-64 space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold">Daftar Pasien</h2>
         <Button onClick={() => navigate('/admission/form-pasien-baru')}>

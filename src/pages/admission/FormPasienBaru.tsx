@@ -66,7 +66,7 @@ const FormPasienBaru: React.FC = () => {
 
   return (
     <section className="space-y-4">
-      <h2 className="text-lg font-semibold">Registrasi Pasien Baru</h2>
+      <h2 className="ml-64 text-lg font-semibold">Registrasi Pasien Baru</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="flex items-center space-x-2">

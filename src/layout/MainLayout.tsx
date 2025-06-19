@@ -21,7 +21,7 @@ const MainLayout: React.FC = () => {
             <span>{user?.name || 'Administrator'}</span>
           </div>
         </div>
-        <div className="content">
+        <div className="ml-64 content">
           <Outlet />
         </div>
       </div>
