@@ -1,5 +1,6 @@
 import { Link, Outlet } from 'react-router-dom'
 import { useAuth } from '../auth/AuthContext'
+import Sidebar from '../components/Sidebar'
 
 const Layout: React.FC = () => {
   const { user, logout } = useAuth()
@@ -10,16 +11,7 @@ const Layout: React.FC = () => {
 
   return (
     <div className="dashboard">
-      <aside className="sidebar">
-        <h2>Menu</h2>
-        <ul>
-          <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/schedule">Schedule</Link></li>
-          <li><Link to="/workforce">Workforce</Link></li>
-          <li><Link to="/admission">Admission</Link></li>
-          <li><button onClick={handleLogout}>Logout</button></li>
-        </ul>
-      </aside>
+      <Sidebar />
       <div className="main">
         <div className="navbar">
           <span className="icon">🔔</span>
