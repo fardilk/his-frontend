@@ -54,7 +54,7 @@ const Sidebar: React.FC = () => {
     <div className="flex flex-col items-center space-y-2 p-3 rounded-lg bg-gray-50 shadow-inner">
       <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-300 shadow">
         <img
-          src={profileImage || 'public/doctor.png'}
+          src="/doctor.png"
           alt="Profile"
           className="w-full h-full object-cover"
         />
@@ -116,6 +116,7 @@ const Sidebar: React.FC = () => {
       </ul>
     </nav>
   </aside>
-)
+  )
+}
 
 export default Sidebar
