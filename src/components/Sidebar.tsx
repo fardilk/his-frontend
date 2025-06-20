@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useAuth } from '../auth/AuthContext'
+import ProfileHeader from './ProfileHeader'
 
 interface MenuItem {
   path?: string
@@ -37,6 +38,7 @@ const Sidebar: React.FC = () => {
 
   const name = user?.name || 'Administrator'
   const currentRole = role
+  const iconText = name.charAt(0).toUpperCase()
 
   const handleLogout = () => {
     logout()
@@ -51,19 +53,7 @@ const Sidebar: React.FC = () => {
   return (
   <aside className="h-screen w-64 bg-white shadow-lg overflow-auto p-4 space-y-4">
     {/* Profile Section */}
-    <div className="flex flex-col items-center space-y-2 p-3 rounded-lg bg-gray-50 shadow-inner">
-      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-300 shadow">
-        <img
-          src={profileImage || 'public/doctor.png'}
-          alt="Profile"
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div className="text-center">
-        <p className="font-semibold text-gray-800">{name}</p>
-        <p className="text-xs text-gray-500">{currentRole}</p>
-      </div>
-    </div>
+    <ProfileHeader name={name} role={currentRole} iconText={iconText} />
 
     {/* Role Switcher */}
     <div>
@@ -116,6 +106,7 @@ const Sidebar: React.FC = () => {
       </ul>
     </nav>
   </aside>
-)
+  )
+}
 
 export default Sidebar

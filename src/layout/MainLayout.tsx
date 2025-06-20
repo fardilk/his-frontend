@@ -3,11 +3,7 @@ import { useAuth } from '../auth/AuthContext'
 import Sidebar from '../components/Sidebar'
 
 const MainLayout: React.FC = () => {
-  const { user, logout } = useAuth()
-
-  const handleLogout = () => {
-    logout()
-  }
+  const { user } = useAuth()
 
   return (
     <div className="dashboard flex">
