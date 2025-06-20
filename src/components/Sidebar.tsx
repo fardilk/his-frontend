@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useAuth } from '../auth/AuthContext'
+import ProfileHeader from './ProfileHeader'
 
 interface MenuItem {
   path?: string
@@ -37,6 +38,7 @@ const Sidebar: React.FC = () => {
 
   const name = user?.name || 'Administrator'
   const currentRole = role
+  const iconText = name.charAt(0).toUpperCase()
 
   const handleLogout = () => {
     logout()
@@ -64,6 +66,7 @@ const Sidebar: React.FC = () => {
         <p className="text-xs text-gray-500">{currentRole}</p>
       </div>
     </div>
+
 
     {/* Role Switcher */}
     <div>
