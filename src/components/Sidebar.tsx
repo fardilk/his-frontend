@@ -61,25 +61,12 @@ const Sidebar: React.FC = () => {
 
       <nav className="flex-1">
         <ul className="space-y-2">
-          {menuItems.map((item) => (
-            <li key={item.label}>
-              {item.path ? (
-                <Link
-                  to={item.path}
-                  className="block p-2 rounded-md hover:bg-gray-100 cursor-pointer text-sm font-medium text-gray-700 transition-colors duration-200"
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <button
-                  onClick={item.action}
-                  className="w-full text-left p-2 rounded-md hover:bg-gray-100 cursor-pointer text-sm font-medium text-gray-700 transition-colors duration-200"
-                >
-                  {item.label}
-                </button>
-              )}
-            </li>
-          ))}
+          <li
+            onClick={handleLogout}
+            className="p-2 rounded-md hover:bg-gray-100 cursor-pointer text-sm font-medium text-gray-700 transition-colors duration-200"
+          >
+            Logout
+          </li>
         </ul>
       </nav>
     </aside>
