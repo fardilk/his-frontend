@@ -53,7 +53,20 @@ const Sidebar: React.FC = () => {
   return (
   <aside className="h-screen w-64 bg-white shadow-lg overflow-auto p-4 space-y-4">
     {/* Profile Section */}
-    <ProfileHeader name={name} role={currentRole} iconText={iconText} />
+    <div className="flex flex-col items-center space-y-2 p-3 rounded-lg bg-gray-50 shadow-inner">
+      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-300 shadow">
+        <img
+          src="/doctor.png"
+          alt="Profile"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="text-center">
+        <p className="font-semibold text-gray-800">{name}</p>
+        <p className="text-xs text-gray-500">{currentRole}</p>
+      </div>
+    </div>
+
 
     {/* Role Switcher */}
     <div>
