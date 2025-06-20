@@ -1,6 +1,22 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useAuth } from '../auth/AuthContext'
+
+interface MenuItem {
+  path?: string
+  label: string
+  action?: () => void
+}
+
+const menusByRole: Record<string, MenuItem[]> = {
+  Administrator: [
+    { path: '/dashboard', label: 'Dashboard' },
+    { path: '/admission', label: 'Admission' },
+    { path: '/config', label: 'Config' },
+  ],
+  Admisi: [{ path: '/admission', label: 'Admission' }],
+  Dokter: [{ path: '/dashboard', label: 'Dashboard' }],
+}
 
 const Sidebar: React.FC = () => {
   const navigate = useNavigate()
@@ -13,6 +29,11 @@ const Sidebar: React.FC = () => {
     logout()
     navigate('/login', { replace: true })
   }
+
+  const menuItems: MenuItem[] = [
+    ...(menusByRole[role] ?? []),
+    { label: 'Logout', action: handleLogout },
+  ]
 
   return (
     <aside className="bg-white shadow-lg rounded-lg p-4 w-64 h-screen flex flex-col">
