@@ -13,12 +13,12 @@ import MainLayout from './layout/MainLayout';
 import AdmissionLayout from './pages/admission/AdmissionLayout';
 import DaftarPasien from './pages/admission/DaftarPasien';
 import FormPasienBaru from './pages/admission/FormPasienBaru';
-import SaasSidebarPreview from './pages/SaasSidebarPreview';
+import Sidebar from './components/Sidebar';
 
 const App: React.FC = () => (
   <Routes>
     <Route path="/login" element={<LoginPage />} />
-    <Route path="/sidebar-preview" element={<SaasSidebarPreview />} />
+    <Route path="/sidebar-preview" element={<Sidebar />} />
     <Route element={<ProtectedRoute />}>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Navigate to="dashboard" replace />} />
