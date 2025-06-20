@@ -13,7 +13,7 @@ import MainLayout from './layout/MainLayout';
 import AdmissionLayout from './pages/admission/AdmissionLayout';
 import DaftarPasien from './pages/admission/DaftarPasien';
 import FormPasienBaru from './pages/admission/FormPasienBaru';
-import SaasSidebarPreview from './pages/SaasSidebarPreview';
+
 
 const App: React.FC = () => (
   <Routes>
