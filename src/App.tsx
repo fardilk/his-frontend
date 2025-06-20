@@ -13,11 +13,13 @@ import MainLayout from './layout/MainLayout';
 import AdmissionLayout from './pages/admission/AdmissionLayout';
 import DaftarPasien from './pages/admission/DaftarPasien';
 import FormPasienBaru from './pages/admission/FormPasienBaru';
+import SaasSidebarPreview from './pages/SaasSidebarPreview';
 
 function App() {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/sidebar-preview" element={<SaasSidebarPreview />} />
       <Route element={<ProtectedRoute />}>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Navigate to="dashboard" replace />} />
