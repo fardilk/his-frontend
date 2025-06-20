@@ -1,8 +1,8 @@
-import Sidebar from '../components/Sidebar'
+import SaasSidebar from '../components/SaasSidebar'
 
 const SaasSidebarPreview: React.FC = () => (
   <div className="bg-gray-50 min-h-screen flex">
-    <Sidebar />
+    <SaasSidebar />
   </div>
 )
 
