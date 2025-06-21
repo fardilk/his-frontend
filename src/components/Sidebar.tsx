@@ -36,15 +36,15 @@ const Sidebar: React.FC = () => {
   ]
 
   return (
-    <aside className="bg-white shadow-lg rounded-lg p-4 w-40 h-screen flex flex-col">
-      <div className="p-3 rounded-md border border-gray-200 bg-gray-50 mb-6 flex items-center">
+    <aside className="bg-white shadow-md rounded-none w-48 h-screen flex flex-col">
+      <div className="flex items-center gap-2 p-3 border-b border-gray-200">
         <img
           src="/doctor.png"
           alt="Profile"
-          className="w-[30px] h-[30px] rounded-md border border-gray-300 object-cover mr-3"
+          className="w-[30px] h-[30px] object-cover rounded-md"
         />
         <div>
-          <p className="text-sm font-semibold text-gray-700">{user?.name || 'John Doe'}</p>
+          <p className="text-sm font-semibold text-gray-800">{user?.name || 'John Doe'}</p>
           <p className="text-xs text-gray-500">{role}</p>
         </div>
       </div>
@@ -69,7 +69,7 @@ const Sidebar: React.FC = () => {
               {item.path ? (
                 <Link
                   to={item.path}
-                  className="block p-2 rounded-md hover:bg-gray-100 transition-colors"
+                  className="flex items-center gap-2 p-2 text-gray-700 hover:bg-gray-100 rounded-md"
                 >
                   {item.label}
                 </Link>
@@ -77,7 +77,7 @@ const Sidebar: React.FC = () => {
                 <button
                   type="button"
                   onClick={item.action}
-                  className="w-full text-left p-2 rounded-md hover:bg-gray-100"
+                  className="flex items-center gap-2 w-full text-left p-2 text-gray-700 hover:bg-gray-100 rounded-md"
                 >
                   {item.label}
                 </button>
