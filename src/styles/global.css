@@ -184,7 +184,6 @@ body {
   .dashboard {
     flex-direction: column;
   }
-
   .sidebar {
     width: 100%;
   }
@@ -196,10 +195,12 @@ body {
 }
 .profile-info {
   @apply flex items-center gap-3;
+
 }
 .profile-img {
   height: 50px;
   width: auto;
+
   @apply rounded-md object-cover;
 }
 .profile-text-name {
@@ -216,10 +217,12 @@ body {
 }
 .profile-select-arrow {
   @apply pointer-events-none absolute inset-y-0 right-2 flex items-center;
+
 }
 .profile-select-arrow-icon {
   width: 0.75rem;
   height: 0.75rem;
   color: #4b5563;
+
 }
 
