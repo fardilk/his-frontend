@@ -23,9 +23,7 @@ const menusByRole: Record<'Administrator' | 'Admisi', MenuItem[]> = {
 const Sidebar: React.FC = () => {
   const navigate = useNavigate()
   const { user, logout } = useAuth()
-  const initialRole =
-    typeof user?.role === 'string' ? user.role : user?.role?.name || 'Administrator'
-  const [role, setRole] = useState<string>(initialRole)
+  const [role, setRole] = useState<string>('Administrator')
 
   const handleLogout = () => {
     logout()
@@ -33,7 +31,7 @@ const Sidebar: React.FC = () => {
   }
 
   const menuItems: MenuItem[] = [
-    ...menusByRole[role as 'Administrator' | 'Admisi'],
+    ...(menusByRole[role as 'Administrator' | 'Admisi'] || []),
     { label: 'Logout', action: handleLogout },
   ]
 
@@ -51,22 +49,17 @@ const Sidebar: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex items-center justify-between mb-4">
-        <span className="text-xs">Admisi</span>
-        <label className="relative inline-flex items-center cursor-pointer">
+      <div className="p-2">
+        <label className="flex items-center gap-1 text-xs">
           <input
             type="checkbox"
-            className="sr-only peer"
             checked={role === 'Administrator'}
             onChange={() =>
-              setRole((prev) =>
-                prev === 'Administrator' ? 'Admisi' : 'Administrator'
-              )
+              setRole(role === 'Administrator' ? 'Admisi' : 'Administrator')
             }
           />
-          <div className="w-9 h-5 bg-gray-200 rounded-full peer peer-checked:bg-blue-600 after:content-[''] after:absolute after:left-[2px] after:top-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-4" />
+          Switch Role
         </label>
-        <span className="text-xs">Administrator</span>
       </div>
 
       <nav className="flex-1">
