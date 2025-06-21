@@ -10,8 +10,15 @@ const variants = {
   secondary: `${base} bg-gray-200 text-gray-800 hover:bg-gray-300`,
 }
 
-const Button: React.FC<ButtonProps> = ({ variant = 'primary', className = '', ...props }) => (
-  <button className={`${variants[variant]} ${className}`} {...props} />
+const Button: React.FC<ButtonProps> = ({
+  variant = 'primary',
+  className = '',
+  children,
+  ...props
+}) => (
+  <button className={`${variants[variant]} ${className}`} {...props}>
+    {children}
+  </button>
 )
 
 export default Button
