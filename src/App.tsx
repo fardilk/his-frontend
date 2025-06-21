@@ -10,8 +10,7 @@ import Schedule from './pages/Schedule';
 import Workforce from './pages/Workforce';
 import ProtectedRoute from './auth/ProtectedRoute';
 import MainLayout from './layout/MainLayout';
-import AdmissionLayout from './pages/admission/AdmissionLayout';
-import DaftarPasien from './pages/admission/DaftarPasien';
+import Admission from './pages/Admission';
 import FormPasienBaru from './pages/admission/FormPasienBaru';
 import Sidebar from './components/Sidebar';
 
@@ -25,11 +24,8 @@ const App: React.FC = () => (
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="schedule" element={<Schedule />} />
         <Route path="workforce" element={<Workforce />} />
-        <Route path="admission" element={<AdmissionLayout />}>
-          <Route index element={<Navigate to="daftar-pasien" replace />} />
-          <Route path="daftar-pasien" element={<DaftarPasien />} />
-          <Route path="form-pasien-baru" element={<FormPasienBaru />} />
-        </Route>
+        <Route path="admission" element={<Admission />} />
+        <Route path="admission/form-pasien-baru" element={<FormPasienBaru />} />
       </Route>
     </Route>
     <Route path="*" element={<Navigate to="/login" replace />} />
