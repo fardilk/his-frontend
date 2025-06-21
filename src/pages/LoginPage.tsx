@@ -57,7 +57,7 @@ const LoginPage = () => {
       </div>
       <div className="right-panel">
         <form onSubmit={handleSubmit} className="login-form">
-          <h2>Welcome!</h2>
+          <h2 className="text-3xl font-bold underline">Welcome!</h2>
           {errorMessage && <div className="error">{errorMessage}</div>}
 
           <div className="form-group">
