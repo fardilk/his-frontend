@@ -3,6 +3,7 @@ import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../services/api'
 import { useAuth } from '../auth/AuthContext'
+import Button from '../components/Button'
 
 
 interface FormErrors {
@@ -61,12 +62,13 @@ const LoginPage = () => {
         <div className="w-4/5 max-w-md p-5 border border-gray-300 rounded-lg bg-gray-50">
           <h2 className="text-center text-2xl font-bold mb-5">Welcome!</h2>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <input
                 type="email"
                 placeholder="Email"
-                defaultValue="admin@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full p-2 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -74,7 +76,8 @@ const LoginPage = () => {
               <input
                 type="password"
                 placeholder="Password"
-                defaultValue="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full p-2 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -89,12 +92,9 @@ const LoginPage = () => {
               </a>
             </div>
 
-            <button
-              type="submit"
-              className="w-full p-2 bg-blue-600 text-white font-bold rounded hover:bg-blue-700 transition"
-            >
-              LOGIN
-            </button>
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? 'Please wait...' : 'LOGIN'}
+            </Button>
           </form>
         </div>
       </div>
