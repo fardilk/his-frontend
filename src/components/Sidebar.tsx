@@ -37,26 +37,35 @@ const Sidebar: React.FC = () => {
 
   return (
     <aside className="bg-white shadow-lg w-56 h-screen flex flex-col rounded-r-xl overflow-hidden">
-      <div className="flex items-center justify-between p-4 bg-gray-50 border-b border-gray-200">
-        <div className="flex items-center gap-3">
-          <img
-            src="/doctor.png"
-            alt="Profile"
-            className="w-8 h-8 rounded-md object-cover"
-          />
+      <div className="profile-container">
+        <div className="profile-info">
+          <img alt="Profile" src="/doctor.png" className="profile-img" />
           <div className="leading-none">
-            <p className="text-sm font-medium text-gray-800">{user?.name || 'John Doe'}</p>
-            <p className="text-xs text-gray-500">{role}</p>
+            <p className="profile-text-name">{user?.name || 'John Doe'}</p>
+            <p className="profile-text-role">{role}</p>
           </div>
         </div>
-        <select
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
-          className="border border-gray-200 rounded px-2 py-1 text-xs text-gray-600 bg-white"
-        >
-          <option value="Administrator">Administrator</option>
-          <option value="Admisi">Admisi</option>
-        </select>
+        <div className="profile-select-wrapper">
+          <select
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            className="profile-select"
+          >
+            <option value="Administrator">Administrator</option>
+            <option value="Admisi">Admisi</option>
+          </select>
+          <div className="profile-select-arrow">
+            <svg
+              className="profile-select-arrow-icon"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
       </div>
 
       <nav className="flex-1">
