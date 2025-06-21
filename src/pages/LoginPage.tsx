@@ -3,7 +3,12 @@ import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../services/api'
 import { useAuth } from '../auth/AuthContext'
-import Button from '../components/Button'
+const baseButtonClasses =
+  'px-4 py-2 rounded focus:outline-none focus:ring text-sm font-bold transition'
+const buttonVariants = {
+  primary: `${baseButtonClasses} bg-blue-600 text-white hover:bg-blue-700`,
+  secondary: `${baseButtonClasses} bg-gray-200 text-gray-800 hover:bg-gray-300`,
+}
 
 
 interface FormErrors {
@@ -95,13 +100,13 @@ const LoginPage = () => {
                 Forgot your password?
               </a>
             </div>
-            <Button
+            <button
               type="submit"
-              className="w-full bg-white text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white"
+              className={`${buttonVariants.primary} w-full bg-white text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white`}
               disabled={loading}
             >
               {loading ? 'Please wait...' : 'LOGIN'}
-            </Button>
+            </button>
           </form>
         </div>
       </div>
