@@ -3,7 +3,9 @@ import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../services/api'
 import { useAuth } from '../auth/AuthContext'
-import Button from '../components/Button'
+
+const loginBtnClasses =
+  'w-full px-4 py-2 rounded focus:outline-none focus:ring text-sm font-bold transition bg-white text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white'
 
 
 interface FormErrors {
@@ -44,10 +46,6 @@ const LoginPage = () => {
     } catch (err: any) {
       const message = err.response?.data?.message || 'Login failed'
       setErrorMessage(message)
-      // Navigate to dashboard even if credentials are incorrect
-      // using a dummy session so the page is accessible
-      login('guest-token', { id: 0, name: 'Guest', email, role: null })
-      navigate('/dashboard', { replace: true })
     } finally {
       setLoading(false)
     }
@@ -95,13 +93,13 @@ const LoginPage = () => {
                 Forgot your password?
               </a>
             </div>
-            <Button
+            <button
               type="submit"
-              className="w-full bg-white text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white"
+              className={loginBtnClasses}
               disabled={loading}
             >
               {loading ? 'Please wait...' : 'LOGIN'}
-            </Button>
+            </button>
           </form>
         </div>
       </div>

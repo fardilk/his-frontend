@@ -1,5 +1,9 @@
 import { useNavigate } from 'react-router-dom'
-import Button from '../../components/Button'
+
+const baseButtonClasses =
+  'px-4 py-2 rounded focus:outline-none focus:ring text-sm font-bold transition'
+const primaryButton = `${baseButtonClasses} bg-blue-600 text-white hover:bg-blue-700`
+const secondaryButton = `${baseButtonClasses} bg-gray-200 text-gray-800 hover:bg-gray-300`
 
 interface Pasien {
   noRm: string
@@ -36,9 +40,12 @@ const DaftarPasien: React.FC = () => {
     <section className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold">Daftar Pasien</h2>
-        <Button onClick={() => navigate('/admission/form-pasien-baru')}>
+        <button
+          className={primaryButton}
+          onClick={() => navigate('/admission/form-pasien-baru')}
+        >
           Daftarkan Pasien
-        </Button>
+        </button>
       </div>
       <table className="min-w-full text-sm text-left border border-gray-200">
         <thead>
@@ -60,8 +67,8 @@ const DaftarPasien: React.FC = () => {
               <td className="px-3 py-2 border-b">{p.alamat}</td>
               <td className="px-3 py-2 border-b">{p.status}</td>
               <td className="px-3 py-2 border-b space-x-2">
-                <Button variant="secondary" className="edit-btn">Edit</Button>
-                <Button variant="secondary" className="delete-btn">Delete</Button>
+                <button className={`${secondaryButton} edit-btn`}>Edit</button>
+                <button className={`${secondaryButton} delete-btn`}>Delete</button>
               </td>
             </tr>
           ))}
