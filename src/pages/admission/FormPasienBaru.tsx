@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import NomorIdentitasPanel from '../../components/form-panels/NomorIdentitasPanel'
 import DataPasienPanel from '../../components/form-panels/DataPasienPanel'
 import AlamatIdentitasPanel from '../../components/form-panels/AlamatIdentitasPanel'
@@ -21,6 +22,7 @@ const FormPasienBaru: React.FC = () => {
   const [form, setForm] = useState<PatientFormState>(initialState)
 
   const [showPopup, setShowPopup] = useState(false)
+  const navigate = useNavigate()
 
   const handleChange = <S extends SectionKey, F extends keyof PatientFormState[S]>(
     section: S,
@@ -60,11 +62,9 @@ const FormPasienBaru: React.FC = () => {
 
   // Delay before clearing and redirecting
   setTimeout(() => {
-    // Clear localStorage (optional, depending what you want)
+    // Clear saved data then navigate back
     localStorage.removeItem('savedPatientData')
-
-    // Navigate back to admission page
-    window.location.href = '/admission'   // or use navigate() if using react-router
+    navigate('/admission', { replace: true })
   }, 2000)
 }
 
@@ -125,7 +125,7 @@ const FormPasienBaru: React.FC = () => {
           <button
             type="button"
             className={secondaryButton}
-            onClick={() => alert('Cancelled')}
+            onClick={() => navigate('/admission', { replace: true })}
           >
             Cancel
           </button>
