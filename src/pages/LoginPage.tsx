@@ -3,6 +3,7 @@ import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../services/api'
 import { useAuth } from '../auth/AuthContext'
+
 const baseButtonClasses =
   'px-4 py-2 rounded focus:outline-none focus:ring text-sm font-bold transition'
 const buttonVariants = {
@@ -49,10 +50,6 @@ const LoginPage = () => {
     } catch (err: any) {
       const message = err.response?.data?.message || 'Login failed'
       setErrorMessage(message)
-      // Navigate to dashboard even if credentials are incorrect
-      // using a dummy session so the page is accessible
-      login('guest-token', { id: 0, name: 'Guest', email, role: null })
-      navigate('/dashboard', { replace: true })
     } finally {
       setLoading(false)
     }

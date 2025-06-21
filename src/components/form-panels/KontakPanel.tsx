@@ -1,6 +1,8 @@
 import React from 'react'
 import { ContactForm } from './types'
-import Button from '../Button'
+const baseButtonClasses =
+  'px-4 py-2 rounded focus:outline-none focus:ring text-sm font-bold transition'
+const secondaryButton = `${baseButtonClasses} bg-gray-200 text-gray-800 hover:bg-gray-300`
 
 interface Props {
   data: ContactForm
@@ -29,7 +31,9 @@ const KontakPanel: React.FC<Props> = ({ data, onChange }) => (
       <label className="block text-sm">Email:</label>
       <input className="w-full border rounded p-2" type="email" value={data.email} onChange={e => onChange('email', e.target.value)} />
     </div>
-    <Button type="button" variant="secondary">Add Contact</Button>
+    <button type="button" className={secondaryButton}>
+      Add Contact
+    </button>
   </fieldset>
 )
 

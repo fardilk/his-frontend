@@ -7,10 +7,14 @@ import KontakPanel from '../../components/form-panels/KontakPanel'
 import KontakDaruratPanel from '../../components/form-panels/KontakDaruratPanel'
 import HubunganKeluargaPanel from '../../components/form-panels/HubunganKeluargaPanel'
 import SuccessToast from '../../components/SuccessToast'
-import Button from '../../components/Button'
 
 import type { PatientFormState, SectionKey, SimpleKey } from '../../components/form-panels/types'
 import { initialState } from '../../components/form-panels/types'
+
+const baseButtonClasses =
+  'px-4 py-2 rounded focus:outline-none focus:ring text-sm font-bold transition'
+const primaryButton = `${baseButtonClasses} bg-blue-600 text-white hover:bg-blue-700`
+const secondaryButton = `${baseButtonClasses} bg-gray-200 text-gray-800 hover:bg-gray-300`
 
 
 const FormPasienBaru: React.FC = () => {
@@ -118,10 +122,16 @@ const FormPasienBaru: React.FC = () => {
         />
 
         <div className="pt-4 flex space-x-2">
-          <Button type="button" variant="secondary" onClick={() => alert('Cancelled')}>
+          <button
+            type="button"
+            className={secondaryButton}
+            onClick={() => alert('Cancelled')}
+          >
             Cancel
-          </Button>
-          <Button type="submit">Save</Button>
+          </button>
+          <button type="submit" className={primaryButton}>
+            Save
+          </button>
         </div>
       </form>
 
