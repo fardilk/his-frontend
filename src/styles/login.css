@@ -1,0 +1,103 @@
+@layer components {
+  .login-page {
+    display: flex;
+    min-height: 100vh;
+    font-family: theme('fontFamily.sans');
+  }
+
+  .left-panel {
+    flex: 1;
+    background-color: theme('colors.gray.100');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .left-panel .illustration {
+    width: 80%;
+    height: 80%;
+    background-image: url('/your-illustration.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .right-panel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: theme('colors.white');
+  }
+
+  .login-form {
+    width: 80%;
+    max-width: 400px;
+    padding: theme('spacing.5');
+    border-width: 1px;
+    border-color: theme('colors.gray.300');
+    border-radius: theme('borderRadius.lg');
+    background-color: theme('colors.gray.50');
+  }
+
+  .login-form h2 {
+    text-align: center;
+    margin-bottom: theme('spacing.5');
+  }
+
+  .form-group {
+    margin-bottom: theme('spacing.4');
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: theme('spacing.2');
+    font-size: theme('fontSize.sm');
+    border-width: 1px;
+    border-color: theme('colors.gray.300');
+    border-radius: theme('borderRadius.DEFAULT');
+  }
+
+  .form-group .error {
+    color: theme('colors.red.500');
+    font-size: theme('fontSize.xs');
+    margin-top: theme('spacing.1');
+    display: block;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: theme('spacing.4');
+  }
+
+  .remember {
+    font-size: theme('fontSize.xs');
+  }
+
+  .forgot {
+    font-size: theme('fontSize.xs');
+    color: theme('colors.blue.500');
+    text-decoration: none;
+  }
+
+  .forgot:hover {
+    text-decoration: underline;
+  }
+
+  .login-button {
+    width: 100%;
+    padding: theme('spacing.2');
+    background-color: theme('colors.blue.500');
+    border: none;
+    color: theme('colors.white');
+    font-weight: theme('fontWeight.bold');
+    border-radius: theme('borderRadius.DEFAULT');
+    cursor: pointer;
+  }
+
+  .login-button:hover {
+    background-color: theme('colors.blue.700');
+  }
+}
