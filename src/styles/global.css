@@ -2,261 +2,157 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base reset */
-html,
-body,
-#root {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
+@layer base {
+  html,
+  body,
+  #root {
+    @apply w-full h-full m-0 p-0;
+  }
 
-body {
-  display: block;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  body {
+    @apply block font-sans;
+  }
 }
 
 /* Login page */
-.login-page {
-  display: flex;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-}
+@layer components {
+  .login-page {
+    @apply flex min-h-screen font-sans;
+  }
 
-.left-panel {
-  flex: 1;
-  background: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .left-panel {
+    @apply flex-1 flex items-center justify-center bg-gray-200;
+  }
 
-.left-panel .illustration {
-  width: 80%;
-  height: 80%;
-  background: url('/your-illustration.png') center/contain no-repeat;
-}
+  .left-panel .illustration {
+    @apply w-4/5 h-4/5 bg-[url('/your-illustration.png')] bg-center bg-contain bg-no-repeat;
+  }
 
-.right-panel {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff;
-}
+  .right-panel {
+    @apply flex-1 flex items-center justify-center bg-white;
+  }
 
-.login-form {
-  width: 80%;
-  max-width: 400px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #fafafa;
-}
+  .login-form {
+    @apply w-4/5 max-w-md p-5 border border-gray-300 rounded bg-gray-50;
+  }
 
-.login-form h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
+  .login-form h2 {
+    @apply text-center mb-5;
+  }
 
-.form-group {
-  margin-bottom: 15px;
-}
+  .form-group {
+    @apply mb-4;
+  }
 
-.form-group input {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+  .form-group input {
+    @apply w-full p-2 text-sm border border-gray-300 rounded;
+  }
 
-.form-group .error {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
-  display: block;
-}
+  .form-group .error {
+    @apply text-red-500 text-xs mt-1 block;
+  }
 
-.actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
+  .actions {
+    @apply flex justify-between items-center mb-4;
+  }
 
-.remember {
-  font-size: 12px;
-}
+  .remember {
+    @apply text-xs;
+  }
 
-.forgot {
-  font-size: 12px;
-  color: #007bff;
-  text-decoration: none;
-}
+  .forgot {
+    @apply text-xs text-blue-500 no-underline hover:underline;
+  }
 
-.forgot:hover {
-  text-decoration: underline;
-}
-
-.login-button {
-  width: 100%;
-  padding: 10px;
-  background: #007bff;
-  border: none;
-  color: white;
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.login-button:hover {
-  background: #0056b3;
+  .login-button {
+    @apply w-full p-2 font-bold text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-700;
+  }
 }
 
 /* Dashboard */
-.dashboard {
-  display: flex;
-  min-height: 100vh;
-}
-
-.sidebar {
-  width: 200px;
-  background: #f4f4f4;
-  padding: 20px;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar li {
-  margin-bottom: 10px;
-}
-
-.sidebar a,
-.sidebar button {
-  background: none;
-  border: none;
-  color: #333;
-  text-decoration: none;
-  cursor: pointer;
-  font: inherit;
-}
-
-.main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.navbar {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background: #007bff;
-  color: #fff;
-  padding: 10px;
-}
-
-.navbar .icon {
-  margin-right: 1rem;
-  cursor: pointer;
-}
-
-.navbar .profile {
-  display: flex;
-  align-items: center;
-}
-
-.navbar .profile span {
-  margin-left: 0.25rem;
-}
-
-.content {
-  flex: 1;
-  padding: 20px;
-}
-
-@media (max-width: 768px) {
+@layer components {
   .dashboard {
-    flex-direction: column;
+    @apply flex min-h-screen flex-col md:flex-row;
   }
+
   .sidebar {
-    width: 100%;
+    @apply w-full md:w-[200px] bg-gray-100 p-5;
+  }
+
+  .sidebar ul {
+    @apply list-none p-0;
+  }
+
+  .sidebar li {
+    @apply mb-2;
+  }
+
+  .sidebar a,
+  .sidebar button {
+    @apply bg-transparent border-none text-gray-800 no-underline cursor-pointer font-inherit;
+  }
+
+  .main {
+    @apply flex-1 flex flex-col;
+  }
+
+  .navbar {
+    @apply flex justify-end items-center bg-blue-500 text-white p-2;
+  }
+
+  .navbar .icon {
+    @apply mr-4 cursor-pointer;
+  }
+
+  .navbar .profile {
+    @apply flex items-center;
+  }
+
+  .navbar .profile span {
+    @apply ml-1;
+  }
+
+  .content {
+    @apply flex-1 p-5;
   }
 }
 
 /* Navbar profile styles */
 @layer components {
   .profile-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2em;
-    border-bottom: 1px solid #e5e7eb; /* gray-200 */
-    background-color: #f3f4f6; /* gray-100 */
+    @apply flex items-center justify-between p-8 border-b border-gray-200 bg-gray-100;
   }
 
   .profile-info {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem; /* gap-3 */
+    @apply flex items-center gap-3;
   }
 
   .profile-img {
-    height: 50px;
-    width: auto;
-    border-radius: 0.375rem; /* rounded-md */
-    object-fit: cover;
+    @apply h-[50px] w-auto rounded-md object-cover;
   }
 
   .profile-text-name {
-    font-size: 0.875rem; /* text-sm */
-    line-height: 1.25rem;
-    font-weight: 500; /* font-medium */
-    color: #1f2937; /* gray-800 */
+    @apply text-sm font-medium text-gray-800;
   }
 
   .profile-text-role {
-    font-size: 0.75rem; /* text-xs */
-    line-height: 1rem;
-    color: #6b7280; /* gray-500 */
+    @apply text-xs text-gray-500;
   }
 
   .profile-select-wrapper {
-    position: relative;
+    @apply relative;
   }
 
   .profile-select {
-    appearance: none;
-    border-width: 1px;
-    border-color: #e5e7eb; /* gray-200 */
-    border-radius: 0.375rem; /* rounded */
-    padding: 0.25rem 0.5rem; /* py-1 px-2 */
-    padding-right: 1.5rem; /* pr-6 */
-    font-size: 0.75rem; /* text-xs */
-    line-height: 1rem;
-    color: #4b5563; /* gray-600 */
-    background-color: #ffffff; /* bg-white */
+    @apply appearance-none border border-gray-200 rounded py-1 px-2 pr-6 text-xs leading-4 text-gray-600 bg-white;
   }
 
   .profile-select-arrow {
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    bottom: 0; /* inset-y-0 */
-    right: 0.5rem; /* right-2 */
-    display: flex;
-    align-items: center;
+    @apply pointer-events-none absolute inset-y-0 right-2 flex items-center;
   }
 
   .profile-select-arrow-icon {
-    width: 0.75rem;
-    height: 0.75rem;
-    color: #4b5563;
+    @apply w-3 h-3 text-gray-600;
   }
 }
 
