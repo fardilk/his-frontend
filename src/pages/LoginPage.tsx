@@ -50,53 +50,53 @@ const LoginPage = () => {
 
   return (
     <div className="flex min-h-screen font-sans">
-      <div className="flex flex-1 items-center justify-center bg-gray-100">
-        <div className="h-4/5 w-4/5 bg-[url('/doctor.png')] bg-contain bg-center bg-no-repeat" />
+      {/* Left panel */}
+      <div className="flex-1 bg-gray-100 flex items-center justify-center">
+        <div className="w-4/5 h-4/5 bg-center bg-contain bg-no-repeat" style={{ backgroundImage: `url('/your-illustration.png')` }}>
+        </div>
       </div>
-      <div className="flex flex-1 items-center justify-center bg-white">
-        <form onSubmit={handleSubmit} className="w-4/5 max-w-sm space-y-4 rounded-lg border border-gray-300 bg-gray-50 p-5">
-          <h2 className="mb-5 text-center text-3xl font-bold">Welcome!</h2>
-          {errorMessage && <div className="text-center text-red-500">{errorMessage}</div>}
 
-          <div className="space-y-1">
-            <input
-              type="email"
-              placeholder="Your E-mail"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded border border-gray-300 p-2 text-sm"
-            />
-            {errors.email && <span className="block text-xs text-red-500">{errors.email}</span>}
-          </div>
+      {/* Right panel */}
+      <div className="flex-1 flex items-center justify-center bg-white">
+        <div className="w-4/5 max-w-md p-5 border border-gray-300 rounded-lg bg-gray-50">
+          <h2 className="text-center text-2xl font-bold mb-5">Welcome!</h2>
 
-          <div className="space-y-1">
-            <input
-              type="password"
-              placeholder="Your Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded border border-gray-300 p-2 text-sm"
-            />
-            {errors.password && <span className="block text-xs text-red-500">{errors.password}</span>}
-          </div>
+          <form>
+            <div className="mb-4">
+              <input
+                type="email"
+                placeholder="Email"
+                defaultValue="admin@example.com"
+                className="w-full p-2 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div className="mb-4">
+              <input
+                type="password"
+                placeholder="Password"
+                defaultValue="••••••••"
+                className="w-full p-2 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
-          <div className="mb-4 flex items-center justify-between">
-            <label className="text-xs">
-              <input type="checkbox" className="mr-1" /> Remember my password
-            </label>
-            <a href="#" className="text-xs text-blue-500 hover:underline">
-              Forgot your password?
-            </a>
-          </div>
+            <div className="flex justify-between items-center mb-4 text-xs">
+              <label className="flex items-center">
+                <input type="checkbox" className="mr-1" />
+                Remember my password
+              </label>
+              <a href="#" className="text-blue-600 hover:underline">
+                Forgot your password?
+              </a>
+            </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full rounded bg-blue-500 p-2 font-bold text-white hover:bg-blue-700"
-          >
-            {loading ? 'Loading...' : 'LOGIN'}
-          </button>
-        </form>
+            <button
+              type="submit"
+              className="w-full p-2 bg-blue-600 text-white font-bold rounded hover:bg-blue-700 transition"
+            >
+              LOGIN
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   )
