@@ -37,23 +37,22 @@ const Sidebar: React.FC = () => {
 
   return (
     <aside className="bg-white shadow-lg w-56 h-screen flex flex-col rounded-r-xl overflow-hidden">
-      <div className="flex items-center gap-3 p-4 bg-gray-50 border-b border-gray-200">
-        <img
-          src="/doctor.png"
-          alt="Profile"
-          className="w-[36px] h-[36px] rounded-md object-cover"
-        />
-        <div>
-          <p className="text-sm font-semibold text-gray-900">{user?.name || 'John Doe'}</p>
-          <p className="text-xs text-gray-500">{role}</p>
+      <div className="flex items-center justify-between p-4 bg-gray-50 border-b border-gray-200">
+        <div className="flex items-center gap-3">
+          <img
+            src="/doctor.png"
+            alt="Profile"
+            className="w-8 h-8 rounded-md object-cover"
+          />
+          <div className="leading-none">
+            <p className="text-sm font-medium text-gray-800">{user?.name || 'John Doe'}</p>
+            <p className="text-xs text-gray-500">{role}</p>
+          </div>
         </div>
-      </div>
-
-      <div className="p-4">
         <select
           value={role}
           onChange={(e) => setRole(e.target.value)}
-          className="mt-2 w-full border border-gray-200 rounded p-1 text-xs text-gray-600 bg-white"
+          className="border border-gray-200 rounded px-2 py-1 text-xs text-gray-600 bg-white"
         >
           <option value="Administrator">Administrator</option>
           <option value="Admisi">Admisi</option>
