@@ -92,7 +92,12 @@ const LoginPage = () => {
               </a>
             </div>
 
-            <Button type="submit" className="w-full" disabled={loading}>
+
+            <Button
+              type="submit"
+              className="w-full bg-white text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white"
+              disabled={loading}
+
               {loading ? 'Please wait...' : 'LOGIN'}
             </Button>
           </form>
