@@ -36,40 +36,38 @@ const Sidebar: React.FC = () => {
   ]
 
   return (
-    <aside className="bg-white shadow-md rounded-none w-48 h-screen flex flex-col">
-      <div className="flex items-center gap-2 p-3 border-b border-gray-200">
+    <aside className="bg-white shadow-lg w-56 h-screen flex flex-col rounded-r-xl overflow-hidden">
+      <div className="flex items-center gap-3 p-4 bg-gray-50 border-b border-gray-200">
         <img
           src="/doctor.png"
           alt="Profile"
-          className="w-[30px] h-[30px] object-cover rounded-md"
+          className="w-[36px] h-[36px] rounded-md object-cover"
         />
         <div>
-          <p className="text-sm font-semibold text-gray-800">{user?.name || 'John Doe'}</p>
+          <p className="text-sm font-semibold text-gray-900">{user?.name || 'John Doe'}</p>
           <p className="text-xs text-gray-500">{role}</p>
         </div>
       </div>
 
-      <div className="p-2">
-        <label className="flex items-center gap-1 text-xs">
-          <input
-            type="checkbox"
-            checked={role === 'Administrator'}
-            onChange={() =>
-              setRole(role === 'Administrator' ? 'Admisi' : 'Administrator')
-            }
-          />
-          Switch Role
-        </label>
+      <div className="p-4">
+        <select
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+          className="mt-2 w-full border border-gray-200 rounded p-1 text-xs text-gray-600 bg-white"
+        >
+          <option value="Administrator">Administrator</option>
+          <option value="Admisi">Admisi</option>
+        </select>
       </div>
 
       <nav className="flex-1">
         <ul className="space-y-2">
           {menuItems.map(item => (
-            <li key={item.label} className="text-sm font-medium text-gray-700">
+            <li key={item.label}>
               {item.path ? (
                 <Link
                   to={item.path}
-                  className="flex items-center gap-2 p-2 text-gray-700 hover:bg-gray-100 rounded-md"
+                  className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md text-sm transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -77,7 +75,11 @@ const Sidebar: React.FC = () => {
                 <button
                   type="button"
                   onClick={item.action}
-                  className="flex items-center gap-2 w-full text-left p-2 text-gray-700 hover:bg-gray-100 rounded-md"
+                  className={
+                    item.label === 'Logout'
+                      ? 'w-full flex items-center justify-center p-2 text-sm text-gray-600 bg-gray-50 hover:bg-gray-100 rounded-md'
+                      : 'flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md text-sm transition-colors'
+                  }
                 >
                   {item.label}
                 </button>
