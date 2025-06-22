@@ -1,6 +1,7 @@
 import React from 'react'
 
-const baseButtonClasses =
+
+export const baseButtonClasses =
   'px-4 py-2 rounded text-sm font-bold transition focus:outline-none focus:ring-2 focus:ring-blue-300'
 
 const variantClasses = {
@@ -9,8 +10,8 @@ const variantClasses = {
   ghost: 'border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white',
   danger: 'bg-red-600 text-white hover:bg-red-700',
   success: 'bg-green-600 text-white hover:bg-green-700',
-}
-
+as const
+  
 export type ButtonVariant = keyof typeof variantClasses
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
