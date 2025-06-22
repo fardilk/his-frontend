@@ -1,4 +1,3 @@
-
 import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../services/api'
@@ -94,7 +93,7 @@ const LoginPage = () => {
             <Button
               type="submit"
               fullWidth
-              variant="danger"
+              variant="primary"
             >
               LOGIN
             </Button>
