@@ -2,9 +2,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-  "./index.html",
-  "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  './src/**/*.{js,ts,jsx,tsx, css}', // ini cover semua file di src, termasuk components + pages
+] ,
   theme: {
     extend: {},
   },

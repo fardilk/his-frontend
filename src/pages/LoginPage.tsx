@@ -95,8 +95,6 @@ const LoginPage = () => {
               type="submit"
               fullWidth
               variant="primary"
-              disabled={loading}
-              isLoading={loading}
             >
               LOGIN
             </Button>
