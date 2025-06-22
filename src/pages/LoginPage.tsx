@@ -1,4 +1,3 @@
-
 import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../services/api'
@@ -81,8 +80,7 @@ const LoginPage = () => {
                 className="w-full p-2 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
-
-            <div className="flex justify-between items-center mb-4 text-xs">
+<div className="flex justify-between items-center mb-4 text-xs">
               <label className="flex items-center">
                 <input type="checkbox" className="mr-1" />
                 Remember my password
@@ -94,7 +92,7 @@ const LoginPage = () => {
             <Button
               type="submit"
               fullWidth
-              variant="danger"
+              variant="primary"
             >
               LOGIN
             </Button>
