@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import NomorIdentitasPanel from '../../components/form-panels/NomorIdentitasPanel'
 import DataPasienPanel from '../../components/form-panels/DataPasienPanel'
 import AlamatIdentitasPanel from '../../components/form-panels/AlamatIdentitasPanel'
@@ -7,16 +8,21 @@ import KontakPanel from '../../components/form-panels/KontakPanel'
 import KontakDaruratPanel from '../../components/form-panels/KontakDaruratPanel'
 import HubunganKeluargaPanel from '../../components/form-panels/HubunganKeluargaPanel'
 import SuccessToast from '../../components/SuccessToast'
-import Button from '../../components/Button'
 
 import type { PatientFormState, SectionKey, SimpleKey } from '../../components/form-panels/types'
 import { initialState } from '../../components/form-panels/types'
+
+const baseButtonClasses =
+  'px-4 py-2 rounded focus:outline-none focus:ring text-sm font-bold transition'
+const primaryButton = `${baseButtonClasses} bg-blue-600 text-white hover:bg-blue-700`
+const secondaryButton = `${baseButtonClasses} bg-gray-200 text-gray-800 hover:bg-gray-300`
 
 
 const FormPasienBaru: React.FC = () => {
   const [form, setForm] = useState<PatientFormState>(initialState)
 
   const [showPopup, setShowPopup] = useState(false)
+  const navigate = useNavigate()
 
   const handleChange = <S extends SectionKey, F extends keyof PatientFormState[S]>(
     section: S,
@@ -56,11 +62,9 @@ const FormPasienBaru: React.FC = () => {
 
   // Delay before clearing and redirecting
   setTimeout(() => {
-    // Clear localStorage (optional, depending what you want)
+    // Clear saved data then navigate back
     localStorage.removeItem('savedPatientData')
-
-    // Navigate back to admission page
-    window.location.href = '/admission'   // or use navigate() if using react-router
+    navigate('/admission', { replace: true })
   }, 2000)
 }
 
@@ -118,10 +122,16 @@ const FormPasienBaru: React.FC = () => {
         />
 
         <div className="pt-4 flex space-x-2">
-          <Button type="button" variant="secondary" onClick={() => alert('Cancelled')}>
+          <button
+            type="button"
+            className={secondaryButton}
+            onClick={() => navigate('/admission', { replace: true })}
+          >
             Cancel
-          </Button>
-          <Button type="submit">Save</Button>
+          </button>
+          <button type="submit" className={primaryButton}>
+            Save
+          </button>
         </div>
       </form>
 
