@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useAuth } from '../auth/AuthContext'
+import ProfileCard from './ProfileCard'
 
 interface MenuItem {
   path?: string
@@ -37,35 +38,13 @@ const Sidebar: React.FC = () => {
 
   return (
     <aside className="bg-white shadow-lg w-56 h-screen flex flex-col rounded-r-xl overflow-hidden">
-      <div className="flex flex-col items-center gap-3 p-4 border-b">
-        <div className="flex items-center gap-3">
-          <img alt="Profile" src="/doctor.png" className="w-12 h-12 rounded-full object-cover" />
-          <div className="leading-none">
-            <p className="font-semibold text-sm">{user?.name || 'John Doe'}</p>
-            <p className="text-xs text-gray-500">{role}</p>
-          </div>
-        </div>
-        <div className="relative w-full">
-          <select
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            className="appearance-none w-full border border-gray-300 rounded-md text-sm py-1 pl-2 pr-6 focus:outline-none"
-          >
-            <option value="Administrator">Administrator</option>
-            <option value="Admisi">Admisi</option>
-          </select>
-          <div className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2">
-            <svg
-              className="w-4 h-4 text-gray-700"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-        </div>
+      <div>
+        <ProfileCard
+          name={user?.name || 'John Doe'}
+          role={role}
+          imageUrl="/doctor.png"
+          onRoleSelect={setRole}
+        />
       </div>
 
       <nav className="flex-1">
