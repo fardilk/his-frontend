@@ -97,7 +97,6 @@ const LoginPage = () => {
               variant="primary"
               disabled={loading}
               isLoading={loading}
-              className="bg-white text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white"
             >
               LOGIN
             </Button>
