@@ -5,6 +5,7 @@ import api from '../services/api'
 import { useAuth } from '../auth/AuthContext'
 import '../styles/global.css';
 import '../styles/login.css';
+import Button from '../components/Button';
 
 
 interface FormErrors {
@@ -87,9 +88,14 @@ const LoginPage = () => {
             <a href="#" className="forgot">Forgot your password?</a>
           </div>
 
-          <button type="submit" disabled={loading} className="login-button">
-            {loading ? 'Loading...' : 'LOGIN'}
-          </button>
+          <Button
+            type="submit"
+            className="login-button w-full"
+            disabled={loading}
+            isLoading={loading}
+          >
+            LOGIN
+          </Button>
         </form>
       </div>
     </div>
