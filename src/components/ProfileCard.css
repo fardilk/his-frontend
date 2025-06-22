@@ -22,9 +22,9 @@
     @apply relative ml-auto w-6;
   }
   .role-popup {
-    @apply absolute right-0 mt-2 bg-white border rounded shadow text-sm z-10;
+    @apply absolute right-0 mt-2 bg-white border border-gray-500 rounded shadow text-sm z-10;
   }
   .role-item {
-    @apply block w-full text-left px-4 py-2 hover:bg-gray-100;
+    @apply block w-full text-left px-4 py-1 hover:bg-gray-100;
   }
 }
