@@ -94,7 +94,7 @@ const LoginPage = () => {
             <Button
               type="submit"
               fullWidth
-              variant="primary"
+              variant="danger"
             >
               LOGIN
             </Button>

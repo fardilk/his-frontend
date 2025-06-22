@@ -19,11 +19,10 @@ const Button: React.FC<ButtonProps> = ({
   ...rest
 }) => {
   const classes = [
-    'btn',
-    variant ? `btn-${variant}` : '',
+    variant ? `btn-${variant}` : '',      // panggil langsung varian, ga ada 'btn' lagi
     fullWidth ? 'btn-full' : '',
     (disabled || isLoading) ? 'btn-disabled' : '',
-    className,
+    className,                            // biar user bisa tambah custom class
   ]
     .filter(Boolean)
     .join(' ')
