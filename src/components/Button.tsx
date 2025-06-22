@@ -3,7 +3,13 @@ import './button.css'
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'success'
 
+export const baseButtonClasses =
+  'px-4 py-2 rounded text-sm font-bold transition focus:outline-none focus:ring-2 focus:ring-blue-300'
+
+type Variant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'success'
+
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+
   variant?: ButtonVariant
   fullWidth?: boolean
   isLoading?: boolean
@@ -29,6 +35,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button className={classes} disabled={disabled || isLoading} {...rest}>
+
       {isLoading ? 'Loading...' : children}
     </button>
   )
