@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./components/button.css";
+@import "./components/ProfileCard.css";
 
 @layer base {
   html,
