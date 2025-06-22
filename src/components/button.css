@@ -45,36 +45,4 @@
   .btn-full {
     @apply w-full;
   }
-
-  /* Interaksi tambahan */
-  .btn-primary:hover,
-  .btn-secondary:hover,
-  .btn-ghost:hover,
-  .btn-danger:hover,
-  .btn-success:hover {
-    border-color: #646cff;
-  }
-
-  .btn-primary:focus,
-  .btn-secondary:focus,
-  .btn-ghost:focus,
-  .btn-danger:focus,
-  .btn-success:focus,
-  .btn-primary:focus-visible,
-  .btn-secondary:focus-visible,
-  .btn-ghost:focus-visible,
-  .btn-danger:focus-visible,
-  .btn-success:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-  }
-
-  @media (prefers-color-scheme: light) {
-    .btn-primary,
-    .btn-secondary,
-    .btn-ghost,
-    .btn-danger,
-    .btn-success {
-      background-color: #f9f9f9;
-    }
-  }
 }
