@@ -38,7 +38,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <aside className="bg-white shadow-lg w-56 h-screen flex flex-col rounded-r-xl overflow-hidden">
-      <div className="p-4 border-b">
+      <div>
         <ProfileCard
           name={user?.name || 'John Doe'}
           role={role}

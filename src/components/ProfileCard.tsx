@@ -39,7 +39,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, imageUrl, onRoleS
         <span className="profile-name">{name}</span>
         <span className="profile-role">{currentRole}</span>
       </div>
-      <div className="relative">
+      <div className="toggle-wrapper">
         <button
           type="button"
           className="toggle-btn"
