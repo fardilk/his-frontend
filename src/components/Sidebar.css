@@ -3,10 +3,50 @@
 @tailwind utilities;
 
 @layer components {
+  .sidebar-container {
+    @apply bg-white shadow-lg w-56 h-screen flex flex-col rounded-r-xl overflow-hidden;
+  }
+
+  .sidebar-header {
+    @apply flex flex-col items-center gap-3 p-4 border-b;
+  }
+
+  .role-select-wrapper {
+    @apply relative w-full;
+  }
+
+  .role-select {
+    @apply appearance-none w-full border border-gray-300 rounded-md text-sm py-1 pl-2 pr-6 focus:outline-none;
+  }
+
+  .role-select-icon-wrapper {
+    @apply pointer-events-none absolute top-1/2 right-2 -translate-y-1/2;
+  }
+
+  .role-select-icon {
+    @apply w-4 h-4 text-gray-700;
+  }
+
+  .sidebar-nav {
+    @apply flex-1;
+  }
+
+  .sidebar-list {
+    @apply space-y-2;
+  }
+
   .sidebar-item {
     @apply flex items-center gap-2 px-3 py-2 rounded transition text-gray-700 hover:bg-blue-600 hover:text-white;
   }
   .sidebar-item.active {
     @apply bg-blue-600 text-white;
+  }
+
+  .sidebar-icon {
+    @apply w-4 text-center;
+  }
+
+  .sidebar-action-btn {
+    @apply w-full flex items-center justify-center p-2 text-sm text-gray-600 bg-gray-50 hover:bg-gray-100 rounded-md;
   }
 }
