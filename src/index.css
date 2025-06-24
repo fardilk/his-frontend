@@ -1,6 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "./components/button.css";
+@import "./components/ProfileCard.css";
+@import "./components/Sidebar.css";
+@import "./components/Navbar.css";
 
 @layer base {
   html,
