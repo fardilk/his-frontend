@@ -12,7 +12,7 @@
   .profile-name {
     @apply font-bold text-gray-800;
   }
-  .profile-role {
+  .profile-role { 
     @apply text-sm text-gray-500;
   }
   .toggle-btn {
