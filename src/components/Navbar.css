@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .navbar {
+    @apply bg-blue-600 flex items-center px-4 py-2 text-white;
+  }
+
+  .collapse-btn {
+    @apply text-white p-2;
+  }
+
+  .collapse-icon {
+    @apply w-6 h-6;
+  }
+
+  .navbar-center {
+    @apply flex-1 flex justify-center;
+  }
+
+  .navbar-actions {
+    @apply ml-auto flex items-center space-x-4;
+  }
+
+  .notification-btn {
+    @apply text-white relative;
+  }
+
+  .notification-icon {
+    @apply w-4 h-4;
+  }
+
+  .profile-wrapper {
+    @apply flex items-center space-x-2;
+  }
+
+  .profile-img {
+    @apply w-8 h-8 rounded-full;
+  }
+
+  .profile-info {
+    @apply flex flex-col text-white;
+  }
+
+  .profile-name {
+    @apply text-sm;
+  }
+
+  .profile-role {
+    @apply text-xs;
+  }
+
+  .profile-dropdown-wrapper {
+    @apply relative;
+  }
+
+  .profile-toggle-btn {
+    @apply text-white rounded p-1 hover:bg-blue-700 hover:bg-opacity-80;
+  }
+
+  .profile-toggle-icon {
+    @apply w-4 h-4;
+  }
+
+  .profile-dropdown {
+    @apply absolute right-0 mt-2 w-32 bg-white rounded shadow text-black text-sm;
+  }
+
+  .profile-role-item {
+    @apply w-full text-left px-2 py-1 hover:bg-gray-100;
+  }
+
+  .notification-popup {
+    @apply absolute right-0 mt-1 bg-white text-xs shadow rounded px-2 py-1;
+  }
+}
