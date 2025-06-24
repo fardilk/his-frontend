@@ -31,25 +31,25 @@ const Sidebar: React.FC = () => {
   ]
 
   return (
-    <aside className="bg-white shadow-lg w-56 h-screen flex flex-col rounded-r-xl overflow-hidden">
-      <div className="flex flex-col items-center gap-3 p-4 border-b">
+    <aside className="sidebar-container">
+      <div className="sidebar-header">
         <ProfilePicture
           name={user?.name || 'John Doe'}
           role={role}
           imageSrc="/doctor.png"
         />
-        <div className="relative w-full">
+        <div className="role-select-wrapper">
           <select
             value={role}
             onChange={(e) => setRole(e.target.value)}
-            className="appearance-none w-full border border-gray-300 rounded-md text-sm py-1 pl-2 pr-6 focus:outline-none"
+            className="role-select"
           >
             <option value="Administrator">Administrator</option>
             <option value="Admisi">Admisi</option>
           </select>
-          <div className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2">
+          <div className="role-select-icon-wrapper">
             <svg
-              className="w-4 h-4 text-gray-700"
+              className="role-select-icon"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
@@ -61,26 +61,29 @@ const Sidebar: React.FC = () => {
         </div>
       </div>
 
-      <nav className="flex-1">
-        <ul className="space-y-2">
+      <nav className="sidebar-nav">
+        <ul className="sidebar-list">
           {menuItems.map(item => (
             <li key={item.label}>
               {item.path ? (
                 <Link
                   to={item.path}
                   onClick={() => setActive(item.label)}
-                  className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors ${
-                    active === item.label ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:bg-gray-100'
-                  }`}
+                  className={[
+                    'sidebar-item',
+                    active === item.label && 'active',
+                  ]
+                    .filter(Boolean)
+                    .join(' ')}
                 >
-                  {item.icon && <i className={`${item.icon} w-4 text-center`}></i>}
+                  {item.icon && <i className={`${item.icon} sidebar-icon`}></i>}
                   {item.label}
                 </Link>
               ) : (
                 <button
                   type="button"
                   onClick={item.action}
-                  className="w-full flex items-center justify-center p-2 text-sm text-gray-600 bg-gray-50 hover:bg-gray-100 rounded-md"
+                  className="sidebar-action-btn"
                 >
                   {item.label}
                 </button>

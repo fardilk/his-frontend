@@ -35,7 +35,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, imageUrl, onRoleS
   return (
     <div className="profile-card" ref={wrapperRef}>
       <img src={imageUrl} alt="Profile" className="profile-image" />
-      <div className="flex flex-col flex-1 mx-3">
+      <div className="profile-info">
         <span className="profile-name">{name}</span>
         <span className="profile-role">{currentRole}</span>
       </div>
@@ -50,7 +50,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, imageUrl, onRoleS
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
-              className="w-5 h-5"
+              className="toggle-icon"
             >
               <path
                 fillRule="evenodd"
@@ -63,7 +63,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, imageUrl, onRoleS
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
-              className="w-5 h-5"
+              className="toggle-icon"
             >
               <path
                 fillRule="evenodd"
