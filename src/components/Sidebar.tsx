@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useAuth } from '../auth/AuthContext'
+import ProfilePicture from './ProfilePicture'
 
 interface MenuItem {
   path?: string
@@ -38,13 +39,11 @@ const Sidebar: React.FC = () => {
   return (
     <aside className="bg-white shadow-lg w-56 h-screen flex flex-col rounded-r-xl overflow-hidden">
       <div className="flex flex-col items-center gap-3 p-4 border-b">
-        <div className="flex items-center gap-3">
-          <img alt="Profile" src="/doctor.png" className="w-12 h-12 rounded-full object-cover" />
-          <div className="leading-none">
-            <p className="font-semibold text-sm">{user?.name || 'John Doe'}</p>
-            <p className="text-xs text-gray-500">{role}</p>
-          </div>
-        </div>
+        <ProfilePicture
+          name={user?.name || 'John Doe'}
+          role={role}
+          imageSrc="/doctor.png"
+        />
         <div className="relative w-full">
           <select
             value={role}
