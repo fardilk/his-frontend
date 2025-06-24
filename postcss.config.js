@@ -1,4 +1,4 @@
-import tailwindcss from '@tailwindcss/postcss';
+import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
